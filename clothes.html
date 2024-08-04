@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anadyomeno</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo.png"/>
+    <style>
+        body, html {
+            height: 100%;
+            background-color: rgb(233, 231, 217);
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 170px;
+            left: -10px;
+            width: 20%;
+        }
+
+        .dropdown-menu {
+            opacity: 0; /* Initially hidden */
+            visibility: hidden; /* Ensure it is hidden */
+            display: flex; /* Keep flex properties for layout */
+            flex-direction: column;
+            align-items: center;
+            margin-left: -50px;
+            gap: 10px;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+        }
+
+        @media (min-width: 600px) {
+            .dropdown:hover .dropdown-menu,
+            .dropdown-menu:hover {
+                opacity: 1; /* Show with opacity */
+                visibility: visible; /* Make visible */
+            }
+        }
+
+        .dropdown-menu a {
+            display: block;
+            width: 40%; 
+            max-width: 650px; /* Ensure it scales properly */
+        }
+
+        .dropdown img {
+            width: 100px; /* Set the image width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        @media (max-width: 600px) {
+            .dropdown {
+                left: 10px;
+                margin-top: -15px;
+            }
+
+            .dropdown img {
+                width: 90px !important; /* Increase the size of the top left image */
+                height: auto;
+            }
+
+            #images-container {
+                grid-template-columns: repeat(2, 1fr); /* Ensure 2 images per row */
+                margin: auto;
+                width: 80%;
+            }
+
+            .dropdown-menu {
+                position: absolute;
+                top: -160px;
+                right: -120px;
+                flex-direction: column;
+            }
+
+            .dropdown-menu a {
+                margin: -16px 0; /* Adjust margin to bring them closer vertically */
+                padding: 0;
+                display: inline-block;
+            }
+
+            .dropdown-menu.show {
+                opacity: 1; /* Show with opacity */
+                visibility: visible; /* Make visible */
+            }
+        }
+    </style>
+</head>
+<body id="clothes-page">
+    <div class="dropdown">
+        <a href="#"><img src="images/anaduomeno.png" alt="Clickable Image" class="dropdown-toggle" id="dropdownMenuButton"></a>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="index.html" target="_blank"><img src="images/home.png" id="image1" class="dropdown-icon"></a>
+            <a href="about.html" target="_blank"><img src="images/about.png" id="image2" class="dropdown-icon"></a>
+            <a href="contact.html" target="_blank"><img src="images/contact.png" id="image3" class="dropdown-icon"></a>
+        </div>
+    </div>
+
+    <div class="clothes-box">
+        <div id="images-container" class="images-toggle">
+            <!-- Images will be appended here -->
+        </div>
+    </div>
+
+    <script>
+        function handleDropdownToggle(event) {
+            event.preventDefault(); // Prevent default link behavior
+            event.stopPropagation(); // Stop the event from bubbling up
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            dropdownMenu.classList.toggle('show');
+        }
+
+        function handleDocumentClick(event) {
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            if (!dropdownMenu.contains(event.target) && dropdownMenu.classList.contains('show')) {
+                dropdownMenu.classList.remove('show');
+            }
+        }
+
+        function setupDropdownToggle() {
+            if (window.innerWidth < 600) {
+                document.getElementById('dropdownMenuButton').addEventListener('click', handleDropdownToggle);
+                document.addEventListener('click', handleDocumentClick);
+            } else {
+                document.getElementById('dropdownMenuButton').removeEventListener('click', handleDropdownToggle);
+                document.removeEventListener('click', handleDocumentClick);
+            }
+        }
+
+        window.addEventListener('resize', setupDropdownToggle);
+        window.addEventListener('load', setupDropdownToggle);
+    </script>
+    <script src="index.js"></script>
+</body>
+</html>

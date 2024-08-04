@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anadyomeno</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo.png"/>
+    <style>
+        body, html {
+            height: 100%;
+            background-color: rgb(233, 231, 217);
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 170px;
+            left: -10px;
+            width: 20%;
+        }
+
+        .dropdown-menu {
+            opacity: 0; /* Initially hidden */
+            visibility: hidden; /* Ensure it is hidden */
+            display: flex; /* Keep flex properties for layout */
+            flex-direction: column;
+            align-items: center;
+            margin-left: -50px;
+            gap: 10px;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+        }
+
+        @media (min-width: 600px) {
+            .dropdown:hover .dropdown-menu,
+            .dropdown-menu:hover {
+                opacity: 1; /* Show with opacity */
+                visibility: visible; /* Make visible */
+            }
+        }
+
+        .dropdown-menu a {
+            display: block;
+            width: 40%; 
+            max-width: 650px; /* Ensure it scales properly */
+        }
+
+        .dropdown img {
+            width: 100px; /* Set the image width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        @media (max-width: 600px) {
+            .dropdown {
+                left: 10px;
+                margin-top: -15px;
+            }
+
+            .dropdown img {
+                width: 90px !important; /* Increase the size of the top left image */
+                height: auto;
+            }
+        }
+
+        .contact-container {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label, input, textarea {
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            cursor: pointer;
+        }
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body id="clothes-page">
+    <div class="dropdown">
+        <a href="#"><img src="images/anaduomeno.png" alt="Clickable Image" class="dropdown-toggle" id="dropdownMenuButton"></a>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="index.html" target="_blank"><img src="images/home.png" id="image1" class="dropdown-icon"></a>
+            <a href="clothes.html " target="_blank"><img src="images/clothes.png" id="image2" class="dropdown-icon"></a>
+            <a href="about.html" target="_blank"><img src="images/about.png" id="image3" class="dropdown-icon"></a>
+        </div>
+    </div>
+
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        <p>For returns or any other problem with your order, please email test@test.com</p>
+        <form id="contactForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Name" required>
+            
+            <label for="email">Email*</label>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="Phone">
+            
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Message" required></textarea>
+            
+            <input type="submit" value="Send">
+        </form>
+    </div>
+
+    <script>
+    $(document).ready(function() {
+        $('#contactForm').on('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            $.ajax({
+                url: '/send', // The endpoint where the form data should be sent
+                type: 'POST',
+                data: $(this).serialize(), // Serialize the form data
+                success: function(response) {
+                    alert('Email sent successfully!');
+                },
+                error: function(xhr, status, error) {
+                    alert('Error sending email: ' + error);
+                }
+            });
+        });
+    });
+    </script>
+     <script src="index.js"></script>
+</body>
+</html>
+    
