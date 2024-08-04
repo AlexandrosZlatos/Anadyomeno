@@ -16,8 +16,8 @@ const port = 3000;
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'arisdoxa12',
-    database: 'anadyomeno'
+    password: '',
+    database: ''
 });
 
 db.connect((err) => {
@@ -72,17 +72,17 @@ app.post('/send', (req, res) => {
 
     // Create a Nodemailer transporter
     const transporter = nodemailer.createTransport({
-        service: 'gmail', // e.g., Gmail, Yahoo, etc.
+        service: 'gmail', 
         auth: {
-            user: 'zlatos.ale@gmail.com', // Replace with your email
-            pass: 'cyzd mckt nzwv jcoy', // Replace with your app password
+            user: '', 
+            pass: '',
         },
     });
 
     // Email options
     const mailOptions = {
         from: email,
-        to: 'zlatos.ale@gmail.com', // Replace with your target email
+        to: '', 
         subject: 'Contact Form Submission',
         text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`,
     };

@@ -67,8 +67,8 @@ dropdownIcons.forEach((icon, index) => {
                             imgElement.src = `http://localhost:3000${image.path}`;
                             imgElement.alt = 'Uploaded Image';
                             imgElement.className = 'uploaded-image';
-                            imgElement.id = `image-${index}`; // Assign unique ID
-                            imgElement.dataset.details = image.details; // Store details in data attribute
+                            imgElement.id = `image-${index}`; 
+                            imgElement.dataset.details = image.details;
                             
                             if (index === 0) {
                                 imgElement.onclick = function() {

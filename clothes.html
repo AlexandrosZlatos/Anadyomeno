@@ -22,9 +22,9 @@
         }
 
         .dropdown-menu {
-            opacity: 0; /* Initially hidden */
-            visibility: hidden; /* Ensure it is hidden */
-            display: flex; /* Keep flex properties for layout */
+            opacity: 0; 
+            visibility: hidden; 
+            display: flex; 
             flex-direction: column;
             align-items: center;
             margin-left: -50px;
@@ -35,20 +35,20 @@
         @media (min-width: 600px) {
             .dropdown:hover .dropdown-menu,
             .dropdown-menu:hover {
-                opacity: 1; /* Show with opacity */
-                visibility: visible; /* Make visible */
+                opacity: 1; 
+                visibility: visible; 
             }
         }
 
         .dropdown-menu a {
             display: block;
             width: 40%; 
-            max-width: 650px; /* Ensure it scales properly */
+            max-width: 650px; 
         }
 
         .dropdown img {
-            width: 100px; /* Set the image width */
-            height: auto; /* Maintain aspect ratio */
+            width: 100px; 
+            height: auto; 
         }
 
         @media (max-width: 600px) {
@@ -58,12 +58,12 @@
             }
 
             .dropdown img {
-                width: 90px !important; /* Increase the size of the top left image */
+                width: 90px !important; 
                 height: auto;
             }
 
             #images-container {
-                grid-template-columns: repeat(2, 1fr); /* Ensure 2 images per row */
+                grid-template-columns: repeat(2, 1fr); 
                 margin: auto;
                 width: 80%;
             }
@@ -76,14 +76,14 @@
             }
 
             .dropdown-menu a {
-                margin: -16px 0; /* Adjust margin to bring them closer vertically */
+                margin: -16px 0; 
                 padding: 0;
                 display: inline-block;
             }
 
             .dropdown-menu.show {
-                opacity: 1; /* Show with opacity */
-                visibility: visible; /* Make visible */
+                opacity: 1; 
+                visibility: visible; 
             }
         }
     </style>
@@ -106,8 +106,8 @@
 
     <script>
         function handleDropdownToggle(event) {
-            event.preventDefault(); // Prevent default link behavior
-            event.stopPropagation(); // Stop the event from bubbling up
+            event.preventDefault(); 
+            event.stopPropagation(); 
             const dropdownMenu = document.getElementById('dropdownMenu');
             dropdownMenu.classList.toggle('show');
         }
