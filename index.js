@@ -95,3 +95,7 @@ dropdownIcons.forEach((icon, index) => {
         window.onload = loadImages;
     });
 
+    function changeImage(imageSrc) {
+        const mainProductImage = document.getElementById('mainProductImage');
+        mainProductImage.src = imageSrc;
+    }

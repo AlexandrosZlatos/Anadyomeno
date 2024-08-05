@@ -224,3 +224,83 @@ body, html {
 .product-description p {
   margin: 0 0 10px 0; 
 }
+
+/* Others Section */
+.others-section {
+  width: 100px; /* Adjust width as needed */
+  margin-top: -15px;
+}
+
+.others-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.other-item {
+  width: 100%; /* Adjust width as needed */
+  text-align: center;
+  margin-right: 440px;
+  
+}
+
+.other-item img {
+  width: 80%;
+  height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.other-item img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.others-section h3 {
+  text-align: center;
+  margin-left: -440px;  
+  font-size: 18px;
+}
+
+.product-image-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-image {
+  max-width: 55%;   
+  height: auto;
+}
+
+.thumbnail-gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.thumbnail-gallery-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.thumbnail {
+  margin: 0 5px;
+  flex-shrink: 0;
+}
+
+.thumbnail img {
+  width: 75px; /* Adjust as needed */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.thumbnail img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

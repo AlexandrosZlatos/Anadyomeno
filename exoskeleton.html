@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" type="image/x-icon" href="images/logo.png"/>
     <style>
-           body, html {
+        body, html {
             height: 100%;
             background-color: rgb(233, 231, 217);
             margin: 0;
@@ -47,8 +47,6 @@
             width: 100px; 
             height: auto; 
         }
-
-        
     </style>
 </head>
 <body id="clothes-page">
@@ -63,7 +61,21 @@
 
     <div class="container">
         <div class="product-image-container">
-            <img src="images/IMG_0456.jpg" alt="Main Product" class="product-image">
+            <img src="images/IMG_0456.jpg" alt="Main Product" class="product-image" id="mainProductImage">
+            <div class="thumbnail-gallery">
+                <div class="thumbnail">
+                    <img src="images/IMG_0456.jpg" alt="Thumbnail 1" onclick="changeImage('images/IMG_0456.jpg')">
+                </div>
+                <div class="thumbnail">
+                    <img src="images/IMG_0517.jpg" alt="Thumbnail 2" onclick="changeImage('images/IMG_0517.jpg')">
+                </div>
+                <div class="thumbnail">
+                    <img src="images/IMG_0548.jpg" alt="Thumbnail 3" onclick="changeImage('images/IMG_0548.jpg')">
+                </div>
+                <div class="thumbnail">
+                    <img src="images/IMG_0564.jpg" alt="Thumbnail 4" onclick="changeImage('images/IMG_0564.jpg')">
+                </div>
+            </div>
         </div>
         <div class="product-details">
             <div class="product-title">
@@ -99,9 +111,36 @@
                 </p>
             </div>
         </div>
+
+        <!-- Others Section -->
+        <div class="others-section">
+            <h3>Others</h3>
+            <div class="others-items">
+                <div class="other-item">
+                    <a href="item1.html">
+                        <img src="images/IMG_0456.jpg" alt="Item 1">
+                    </a>
+                </div>
+                <div class="other-item">
+                    <a href="item2.html">
+                        <img src="images/IMG_0456.jpg" alt="Item 2">
+                    </a>
+                </div>
+                <div class="other-item">
+                    <a href="item3.html">
+                        <img src="images/IMG_0456.jpg" alt="Item 3">
+                    </a>
+                </div>
+                <div class="other-item">
+                    <a href="item4.html">
+                        <img src="images/IMG_0456.jpg" alt="Item 4">
+                    </a>
+                </div>
+                <!-- Add more items as needed -->
+            </div>
+        </div>
     </div>
 
     <script src="index.js"></script>
-
 </body>
 </html>
