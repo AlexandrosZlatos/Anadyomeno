@@ -98,7 +98,48 @@
         </div>
     </div>
 
-   
+    <body>
+        <div class="cart-container">
+            <h1 class="cart-title">Your Cart</h1>
+            <div class="cart-items">
+                <div id="cartItem" class="cart-item">
+                    <!-- Dynamic content will be injected here -->
+                </div>
+            </div>
+            <div class="cart-total">
+                <span class="total-label">TOTAL</span>
+                <span class="total-price" id="totalPrice">€0</span>
+            </div>
+        </div>
+    
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const cartItemElement = document.getElementById('cartItem');
+                const totalPriceElement = document.getElementById('totalPrice');
+                const cartItem = JSON.parse(localStorage.getItem('cartItem'));
+    
+                if (cartItem) {
+                    const totalPrice = parseFloat(cartItem.price.replace('€', '')) * 1; // assuming quantity is 1
+                    cartItemElement.innerHTML = `
+                        <div class="cart-item-image-wrapper">
+                            <img src="${cartItem.image}" alt="${cartItem.name}" class="cart-item-image">
+                        </div>
+                        <div class="cart-item-details">
+                            <h2>${cartItem.name}</h2>
+                            <p class="cart-item-size">Size: ${cartItem.size}</p>
+                            <p class="cart-item-price">${cartItem.price}</p>
+                        </div>
+                        <div class="cart-item-actions">
+                            <span class="cart-item-quantity">1x</span>
+                            <a href="#" class="cart-item-remove">remove</a>
+                        </div>
+                    `;
+                    totalPriceElement.textContent = `€${totalPrice.toFixed(2)}`;
+                } else {
+                    cartItemElement.innerHTML = `<p>Your cart is empty.</p>`;
+                }
+            });
+        </script>
     <script src="index.js"></script>
 </body>
 </html>

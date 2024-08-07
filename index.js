@@ -95,25 +95,36 @@ document.addEventListener('DOMContentLoaded', () => {
     window.onload = loadImages;
 
     // Add to Cart functionality
-    const addToCartButton = document.querySelector('.add-to-cart');
+    const addToCartButton = document.querySelector('#addToCartButton');
     const cartCountElement = document.querySelector('.cart-count');
 
-    // Retrieve the cart count from localStorage and set it before showing the element
     let cartCount = localStorage.getItem('cartCount') ? parseInt(localStorage.getItem('cartCount')) : 0;
     cartCountElement.textContent = cartCount;
     cartCountElement.style.visibility = 'visible';
 
     addToCartButton.addEventListener('click', () => {
+        const productDetails = document.querySelector('.product-details');
+        const productName = productDetails.dataset.name;
+        const productPrice = productDetails.dataset.price;
+        const productSize = productDetails.dataset.size;
+        const productImage = productDetails.dataset.image;
+
+        const cartItem = {
+            name: productName,
+            price: productPrice,
+            size: productSize,
+            image: productImage
+        };
+
+        localStorage.setItem('cartItem', JSON.stringify(cartItem));
         cartCount += 1;
         cartCountElement.textContent = cartCount;
-
-        // Save the updated cart count to localStorage
         localStorage.setItem('cartCount', cartCount);
 
         // Create the checkmark element
         const checkmark = document.createElement('div');
         checkmark.className = 'checkmark';
-        checkmark.innerHTML = '&#10003;'; // Unicode for checkmark
+        checkmark.innerHTML = '&#10003;';
 
         // Append the checkmark next to the add to cart button
         addToCartButton.parentElement.appendChild(checkmark);
@@ -121,13 +132,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Remove the checkmark after the animation completes
         setTimeout(() => {
             checkmark.classList.add('fade-out');
-        }, 1000); // Delay before starting fade out
+        }, 1000);
 
         setTimeout(() => {
             checkmark.remove();
-        }, 2000); // Total duration before removal
+        }, 2000);
     });
-
+    
     function changeImage(imageSrc) {
         const mainProductImage = document.getElementById('mainProductImage');
         mainProductImage.src = imageSrc;
