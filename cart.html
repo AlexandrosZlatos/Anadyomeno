@@ -86,6 +86,22 @@
                 visibility: visible; 
             }
         }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .checkmark {
+            font-size: 24px;
+            color: green;
+            animation: fadeOut 2s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
     </style>
 </head>
 <body id="clothes-page">
@@ -98,48 +114,124 @@
         </div>
     </div>
 
-    <body>
-        <div class="cart-container">
-            <h1 class="cart-title">Your Cart</h1>
-            <div class="cart-items">
-                <div id="cartItem" class="cart-item">
-                    <!-- Dynamic content will be injected here -->
-                </div>
-            </div>
-            <div class="cart-total">
-                <span class="total-label">TOTAL</span>
-                <span class="total-price" id="totalPrice">€0</span>
+    <div class="cart-container">
+        <h1 class="cart-title">Your Cart</h1>
+        <div class="cart-items">
+            <div id="cartItem" class="cart-item">
+                <!-- Dynamic content will be injected here -->
             </div>
         </div>
-    
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const cartItemElement = document.getElementById('cartItem');
-                const totalPriceElement = document.getElementById('totalPrice');
-                const cartItem = JSON.parse(localStorage.getItem('cartItem'));
-    
-                if (cartItem) {
-                    const totalPrice = parseFloat(cartItem.price.replace('€', '')) * 1; // assuming quantity is 1
-                    cartItemElement.innerHTML = `
-                        <div class="cart-item-image-wrapper">
-                            <img src="${cartItem.image}" alt="${cartItem.name}" class="cart-item-image">
-                        </div>
-                        <div class="cart-item-details">
-                            <h2>${cartItem.name}</h2>
-                            <p class="cart-item-size">Size: ${cartItem.size}</p>
-                            <p class="cart-item-price">${cartItem.price}</p>
-                        </div>
-                        <div class="cart-item-actions">
-                            <span class="cart-item-quantity">1x</span>
-                            <a href="#" class="cart-item-remove">remove</a>
-                        </div>
-                    `;
-                    totalPriceElement.textContent = `€${totalPrice.toFixed(2)}`;
-                } else {
-                    cartItemElement.innerHTML = `<p>Your cart is empty.</p>`;
+        <div class="cart-total">
+            <span class="total-label">TOTAL</span>
+            <span class="total-price" id="totalPrice">€0</span>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartItemElement = document.getElementById('cartItem');
+            const totalPriceElement = document.getElementById('totalPrice');
+            let cartCount = localStorage.getItem('cartCount') ? parseInt(localStorage.getItem('cartCount')) : 0;
+
+            const cartItem = JSON.parse(localStorage.getItem('cartItem'));
+
+            if (cartItem) {
+                const totalPrice = parseFloat(cartItem.price.replace('€', '')) * 1; // assuming quantity is 1
+                cartItemElement.innerHTML = `
+                    <div class="cart-item-image-wrapper">
+                        <img src="${cartItem.image}" alt="${cartItem.name}" class="cart-item-image">
+                    </div>
+                    <div class="cart-item-details">
+                        <h2>${cartItem.name}</h2>
+                        <p class="cart-item-size">Size: ${cartItem.size}</p>
+                        <p class="cart-item-price">${cartItem.price}</p>
+                    </div>
+                    <div class="cart-item-actions">
+                        <span class="cart-item-quantity">1x</span>
+                        <a href="#" class="cart-item-remove">remove</a>
+                    </div>
+                `;
+                totalPriceElement.textContent = `€${totalPrice.toFixed(2)}`;
+
+                // Add event listener to the remove link
+                document.querySelector('.cart-item-remove').addEventListener('click', function(event) {
+                    event.preventDefault();
+                    cartItemElement.classList.add('fade-out');
+                    setTimeout(() => {
+                        localStorage.removeItem('cartItem');
+                        cartItemElement.innerHTML = '<p>Your cart is empty.</p>';
+                        totalPriceElement.textContent = '€0.00';
+                        resetCartCount();
+                    }, 500); // 500ms timeout for smooth removal
+                });
+            } else {
+                cartItemElement.innerHTML = `<p>Your cart is empty.</p>`;
+            }
+
+            function resetCartCount() {
+                cartCount = 0;
+                localStorage.setItem('cartCount', cartCount);
+            }
+
+            // Add to Cart functionality
+            const addToCartButton = document.querySelector('#addToCartButton');
+
+            addToCartButton.addEventListener('click', () => {
+                const productDetails = document.querySelector('.product-details');
+                const productName = productDetails.dataset.name;
+                const productPrice = productDetails.dataset.price;
+                const productSize = productDetails.dataset.size;
+                const productImage = productDetails.dataset.image;
+
+                const cartItem = {
+                    name: productName,
+                    price: productPrice,
+                    size: productSize,
+                    image: productImage
+                };
+
+                localStorage.setItem('cartItem', JSON.stringify(cartItem));
+                cartCount += 1;
+                localStorage.setItem('cartCount', cartCount);
+
+                // Create the checkmark element
+                const checkmark = document.createElement('div');
+                checkmark.className = 'checkmark';
+                checkmark.innerHTML = '&#10003;';
+
+                // Append the checkmark next to the add to cart button
+                addToCartButton.parentElement.appendChild(checkmark);
+
+                // Remove the checkmark after the animation completes
+                setTimeout(() => {
+                    checkmark.classList.add('fade-out');
+                }, 1000);
+
+                setTimeout(() => {
+                    checkmark.remove();
+                }, 2000);
+            });
+
+            function changeImage(imageSrc) {
+                const mainProductImage = document.getElementById('mainProductImage');
+                mainProductImage.src = imageSrc;
+            }
+
+            // Reset cart count if the remove button is clicked
+            document.addEventListener('click', (event) => {
+                if (event.target && event.target.classList.contains('cart-item-remove')) {
+                    event.preventDefault();
+                    const cartItemElement = document.getElementById('cartItem');
+                    cartItemElement.classList.add('fade-out');
+                    setTimeout(() => {
+                        localStorage.removeItem('cartItem');
+                        cartItemElement.innerHTML = '<p>Your cart is empty.</p>';
+                        document.getElementById('totalPrice').textContent = '€0.00';
+                        resetCartCount();
+                    }, 500); // 500ms timeout for smooth removal
                 }
             });
-        </script>
-    <script src="index.js"></script>
+        });
+    </script>
 </body>
 </html>

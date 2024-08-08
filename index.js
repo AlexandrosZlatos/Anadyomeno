@@ -143,4 +143,5 @@ document.addEventListener('DOMContentLoaded', () => {
         const mainProductImage = document.getElementById('mainProductImage');
         mainProductImage.src = imageSrc;
     }
+    
 });
