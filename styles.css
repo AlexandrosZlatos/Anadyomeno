@@ -120,3 +120,10 @@ transition: transform 0.3s ease;
   overflow: hidden;
   height: 100vh; /* Prevents background from moving */
 }
+
+
+@media (hover: none) and (pointer: coarse) {
+  a:focus, button:focus {
+      outline: none;
+  }
+}

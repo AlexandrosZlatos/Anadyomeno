@@ -39,6 +39,8 @@
                 opacity: 1; 
                 visibility: visible; 
             }
+
+            
         }
 
         .dropdown-menu a {
@@ -55,12 +57,12 @@
         @media (max-width: 600px) {
 
             body, html {
-        height: auto; /* Allow the body and html to expand naturally */
-        overflow-y: scroll; /* Ensure scrolling is enabled vertically */
-        background-color: rgb(233, 231, 217);
-        margin: 0;
-        padding: 0;
-    }
+                height: auto; 
+                overflow-y: scroll; 
+                background-color: rgb(233, 231, 217);
+                margin: 0;
+                padding: 0;
+            }
 
             .dropdown {
                 left: 10px;
@@ -81,7 +83,6 @@
                 overflow: visible; /* Remove scrolling, allow natural flow of content */
             }
 
-   
 
             .dropdown-menu img {
                 display: none;
@@ -111,7 +112,7 @@
                 background-color: rgba(0, 0, 0, 0.7);
                 opacity: 0;
                 visibility: hidden;
-                z-index: 10;
+                z-index: 9;
             }
 
             .dropdown-menu {
@@ -131,7 +132,9 @@
 </head>
 <body id="clothes-page">
     <div class="dropdown">
-        <a href="index.html"><img src="images/anaduomeno.png" alt="Clickable Image" class="dropdown-toggle" id="dropdownMenuButton"></a>
+        <a href="index.html">
+            <img src="images/anaduomeno.png" alt="Clickable Image" class="dropdown-toggle" id="dropdownMenuButton">
+        </a>
         <div class="overlay" id="dropdownOverlay"></div>
         <div class="dropdown-menu" id="dropdownMenu">
             <a href="index.html" data-text="Home"><img src="images/home.png" id="image1" class="dropdown-icon"></a>
