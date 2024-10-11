@@ -122,8 +122,3 @@ transition: transform 0.3s ease;
 }
 
 
-@media (hover: none) and (pointer: coarse) {
-  a:focus, button:focus {
-      outline: none;
-  }
-}
