@@ -307,7 +307,12 @@ function handleDropdownToggle(event) {
     event.preventDefault(); 
     event.stopPropagation(); 
     const dropdownMenu = document.getElementById('dropdownMenu');
+    const overlay = document.getElementById('dropdownOverlay');
     dropdownMenu.classList.toggle('show');
+
+    overlay.style.opacity = isVisible ? '1' : '0';
+    overlay.style.visibility = isVisible ? 'visible' : 'hidden';
+    document.body.classList.toggle('no-scroll', isVisible);
 }
 
 // Document Click Handling for Dropdown
@@ -315,6 +320,9 @@ function handleDocumentClick(event) {
     const dropdownMenu = document.getElementById('dropdownMenu');
     if (!dropdownMenu.contains(event.target) && dropdownMenu.classList.contains('show')) {
         dropdownMenu.classList.remove('show');
+        overlay.style.opacity = '0';
+        overlay.style.visibility = 'hidden';
+        document.body.classList.remove('no-scroll');
     }
 }
 

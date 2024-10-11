@@ -43,7 +43,7 @@ body, html {
   }
 }
 
-
+/* CLOTHES */
 
 .dropdown-menu a {
   display: block;
@@ -68,4 +68,57 @@ body, html {
 .dropdown-icon:hover {
   transform: translateX(10px);
 }
+}
+
+#clothes-page {
+  overflow: hidden;
+}
+
+#images-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 10px;
+  width: 70%;
+  margin: auto;
+  padding: 5px;
+  height: 580px; 
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: scroll; 
+}
+
+
+.product {
+width: 100%; 
+height: auto;
+transition: transform 0.3s ease;
+
+}
+
+
+#exoskeleton-page .product-image {
+  cursor: zoom-in;
+}
+
+.product-image {
+  /* cursor: zoom-in; */
+width: 100%; 
+max-width: 300px; 
+height: auto; 
+object-fit: cover; 
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+transition: transform 0.3s ease; 
+}
+
+
+
+
+/* Image hover effect */
+.product:hover {
+  transform: scale(1.02); 
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh; /* Prevents background from moving */
 }
