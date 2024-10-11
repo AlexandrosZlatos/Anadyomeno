@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Anadyomeno</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <style>
+        body, html {
+            background-color: rgb(233, 231, 217);
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden !important;  
+            overflow-y: auto !important;    
+            }
+        
+        .dropdown {
+            position: absolute;
+            top: 170px;
+            left: -10px;
+            width: 20%;
+        }
+
+        .dropdown-menu {
+            opacity: 0; 
+            visibility: hidden; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            margin-left: -50px;
+            gap: 10px;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+        }
+
+        .product-image {
+            max-width: 55%;   
+            height: auto;
+            }
+        @media (min-width: 600px) {
+            
+            .dropdown:hover .dropdown-menu,
+            .dropdown-menu:hover {
+                opacity: 1; 
+                visibility: visible; 
+            }
+            
+        }
+            .dropdown-menu a {
+                display: block;
+                width: 40%; 
+                max-width: 650px; 
+            }
+            .dropdown img {
+                width: 100px; 
+                height: auto; 
+            }
+
+            .cart-count {
+                visibility: hidden; 
+            }
+
+        @media (max-width: 768px) {
+            body, html {
+                display: block; 
+                height: auto;   
+            }
+            .dropdown {
+                position: fixed;
+                left: 10px;
+                margin-top: -15px;
+                z-index: 100;
+            }
+
+            .dropdown img {
+                width: 90px !important; 
+                height: auto;
+            }
+
+            #images-container {
+                grid-template-columns: repeat(2, 1fr); 
+                margin: auto;
+                width: 80%;
+            }
+
+            
+            .dropdown-menu img {
+                display: none;
+            }
+
+
+            .dropdown-menu a::after {
+                content: attr(data-text);
+                display: inline-block;
+                color: white;
+                font-size: 36px;
+                padding: 20px;
+                z-index: 1;
+            }
+
+            .dropdown-menu.show {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.7);
+                opacity: 0;
+                visibility: hidden;
+                z-index: 10;
+
+            }
+
+            .dropdown-menu {
+                position: absolute;
+                top: 100px;
+                left: 150%;
+                z-index: 11;
+                transition: none; 
+      
+            }
+                    
+            .container {
+                display: flex;
+                flex-direction: column;
+                margin: 0 auto;
+                padding: 0 15px;
+                width: 100%;
+                margin-left: 0;
+                margin-top: 110px;
+            }
+
+            .product-image-container {
+                width: 100%;
+            }
+
+            .product-image {
+                max-width: 100%; 
+                height: auto;
+                display: block;
+                margin: 0 auto;
+                margin-left: -15px;
+            }
+
+            .thumbnail-gallery {
+                margin-top: 5px;
+                display: flex;
+                justify-content: center;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                margin-right: 30px;
+            }
+            .thumbnail {
+                margin: 5px;
+                flex: 0 0 auto;
+            }
+
+            .thumbnail img {
+                width: 90px;
+                height: auto;
+                border: 1px solid #ddd;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+            
+            .product-title{
+                font-size: 45px;
+            }
+
+            .product-price{
+                font-size: 35px;
+            }
+
+            .product-description{
+                font-size: 30px;
+            }
+            
+            .product-description p{
+                font-size: 18px;
+            }
+
+            .add-to-cart, .add-to-cart.in-cart {
+                padding: 10px 20px; 
+                font-size: 22px; 
+                width: 100%;
+                margin-left: 20px;
+                
+            }
+
+            .others-section {
+                white-space: nowrap;
+                margin-left: -6px;
+                margin-top: 10px;
+                }
+
+            .others-items {
+                display: inline-block; 
+                white-space: nowrap; 
+            }
+
+            .other-item {
+                display: inline-block;
+                margin-right: 0; 
+                width: 100px; 
+            }
+
+            .other-item img {
+                width: 100%;
+                height: auto; 
+            }
+            
+            .others-section h3 {
+                font-size: 24px; 
+                margin: 0;
+            }
+
+            .cart-section {
+                position: fixed;
+            }
+
+              body.no-scroll {
+                overflow: hidden; /* Prevent page from scrolling */
+            }
+    
+        }
+
+    </style>
+</head>
+
+<!-- NOT NEEDED YET -->
+<!-- <div class="cart-section">
+    <a href="cart.html" class="cart-link">
+        <img src="images/favicon-32x32.png" alt="Cart" class="cart-icon">
+        <span class="cart-count">0</span>
+    </a>
+</div> -->
+
+<body id="exoskeleton-page">
+    <div class="dropdown">
+        <a href="index.html">
+            <img src="images/anaduomeno.png" alt="Clickable Image" class="dropdown-toggle" id="dropdownMenuButton">
+        </a>
+        <div class="overlay" id="dropdownOverlay"></div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="index.html"  data-text="Home"><img src="images/home.png" id="image1" class="dropdown-icon"></a>
+            <a href="clothes.html" data-text="Clothes"><img src="images/clothes.png" id="image2" class="dropdown-icon"></a>
+            <a href="contact.html" data-text="Contact"><img src="images/contact.png" id="image3" class="dropdown-icon"></a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="product-image-container">
+            <img src="images/IMG_0456.jpg" alt="Main Product" class="product-image" id="mainProductImage" >
+            <div class="thumbnail-gallery">
+                <div class="thumbnail">
+                    <img src="images/IMG_0456.jpg" alt="Thumbnail 1" onclick="changeImage('images/IMG_0456.jpg')">
+                </div>
+                <div class="thumbnail">
+                    <img src="images/IMG_0517.jpg" alt="Thumbnail 2" onclick="changeImage('images/IMG_0517.jpg')">
+                </div>
+                <div class="thumbnail">
+                    <img src="images/IMG_0548.jpg" alt="Thumbnail 3" onclick="changeImage('images/IMG_0548.jpg')">
+                </div>
+                <div class="thumbnail">
+                    <img src="images/IMG_0564.jpg" alt="Thumbnail 4" onclick="changeImage('images/IMG_0564.jpg')">
+                </div>
+            </div>
+        </div>
+        <div class="product-details" data-name="EXOSKELETON" data-price="€100" data-size="Large" data-image="images/IMG_0456.jpg">
+            <div class="product-title">
+                EXOSKELETON
+            </div>
+            <div class="product-price">
+                €100
+            </div>
+            <div class="product-description">
+                Customized Dickies Jacket<br>
+                Size: (Man’s): Large 
+                <button class="add-to-cart" id="addToCartButton" disabled>NOT AVAILABLE</button>
+                <p>
+                    - Work gloves will be included in the package
+                </p>
+                <p>
+                    - Vintage Dickies Jacket
+                </p>
+                <p>
+                    - Hand painted
+                </p>
+                <p>
+                    - Robust Zipper
+                </p>
+                <p>
+                    - Large pockets
+                </p>
+                <p>
+                    - Sherpa lining
+                </p>
+                <p>
+                    - Regular fit
+                </p>
+            </div>
+        </div>
+
+        <!-- Others Section -->
+        <div class="others-section">
+            <h3>Others</h3>
+            <div class="others-items">
+                <div class="other-item">
+                    <a href="exoskeleton-black.html">
+                        <img src="images/IMG_0639.jpg" alt="Item 1">
+                    </a>
+                </div>
+                <div class="other-item">
+                    <a href="midland.html">
+                        <img src="images/image0.jpg" alt="Item 2">
+                    </a>
+                </div>
+                <div class="other-item">
+                    <a href="nf-windproof.html">
+                        <img src="images/IMG_4859.jpg" alt="Item 3">
+                    </a>
+                </div>
+                <div class="other-item">
+                    <a href="nf-fleece.html">
+                        <img src="images/IMG_4867 (1).jpg" alt="Item 4">
+                    </a>
+                </div>
+                <!-- Add more items as needed -->
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const addToCartButton = document.getElementById('addToCartButton');
+            const cartCountElement = document.querySelector('.cart-count');
+            const cartSection = document.querySelector('.cart-section');
+            const productName = document.querySelector('.product-details').dataset.name;
+        
+            // Function to update the cart count display
+            function updateCartCount() {
+                let cartQuantity = localStorage.getItem('cartQuantity') ? parseInt(localStorage.getItem('cartQuantity')) : 0;
+                cartCountElement.textContent = cartQuantity;
+                cartCountElement.style.visibility = cartQuantity > 0 ? 'visible' : 'hidden';
+            }
+        
+            // Check if the item is already in the cart
+            if (localStorage.getItem('cartItem') && JSON.parse(localStorage.getItem('cartItem')).name === productName) {
+                addToCartButton.textContent = 'IN CART';
+                addToCartButton.disabled = true;
+                addToCartButton.classList.add('in-cart');
+            }
+        
+            addToCartButton.addEventListener('click', () => {
+                addToCartButton.textContent = 'IN CART';
+                addToCartButton.disabled = true;
+                addToCartButton.classList.add('in-cart');
+        
+                const productDetails = document.querySelector('.product-details');
+                const productName = productDetails.dataset.name;
+                const productPrice = productDetails.dataset.price;
+                const productSize = productDetails.dataset.size;
+                const productImage = productDetails.dataset.image;
+        
+                const cartItem = {
+                    name: productName,
+                    price: productPrice,
+                    size: productSize,
+                    image: productImage
+                };
+        
+                localStorage.setItem('cartItem', JSON.stringify(cartItem));
+        
+                // Update the cart count
+                let cartCount = localStorage.getItem('cartQuantity') ? parseInt(localStorage.getItem('cartQuantity')) : 1;
+                localStorage.setItem('cartCount', cartCount);
+        
+                // Update the cart count display
+                updateCartCount();
+            });
+        
+            // Initialize the cart count display when the page loads
+            updateCartCount();
+
+            if (window.innerWidth <= 600) { // Check if the screen width is 600px or less
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                cartSection.classList.add('visible');
+            } else {
+                cartSection.classList.remove('visible');
+            }
+        });
+    }
+        });
+
+       
+        </script>
+        
+    <script src="index.js"></script>
+</body>
+</html>
