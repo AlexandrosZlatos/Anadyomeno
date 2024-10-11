@@ -328,25 +328,12 @@ function handleDocumentClick(event) {
 
 // Setup Dropdown Toggle on Resize
 function setupDropdownToggle() {
-    const dropdownMenu = document.getElementById('dropdownMenu');
-    const overlay = document.getElementById('dropdownOverlay');
-    const dropdownButton = document.getElementById('dropdownMenuButton');
-
     if (window.innerWidth < 600) {
-        overlay.style.display = 'block';
-        dropdownButton.addEventListener('click', handleDropdownToggle);
+        document.getElementById('dropdownMenuButton').addEventListener('click', handleDropdownToggle);
         document.addEventListener('click', handleDocumentClick);
     } else {
-        overlay.style.display = 'none';
-        dropdownButton.removeEventListener('click', handleDropdownToggle);
+        document.getElementById('dropdownMenuButton').removeEventListener('click', handleDropdownToggle);
         document.removeEventListener('click', handleDocumentClick);
-
-        // Ensure dropdown resets
-        dropdownMenu.classList.remove('show');
-        dropdownMenu.style.opacity = '';
-        dropdownMenu.style.visibility = '';
-
-        console.log('Resetting dropdown for larger screens');
     }
 }
 
