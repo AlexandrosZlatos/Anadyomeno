@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anadyomeno</title>
+  
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="shortcut icon" type="image/x-icon" href="images/logo.png"/>
+
+  <style>
+    @media (max-width: 768px) {
+   
+      .dropdown {
+    text-align: center;
+  }
+
+  .dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    visibility: visible;
+    opacity: 1;
+  }
+  .dropdown-menu a {
+  display: flex;
+  width: auto; 
+}
+
+  #image1, #image2, #image3 {
+    width: 100%; 
+    max-width: 500px; 
+    padding: 0; /* Remove any padding */
+  }
+}
+  </style>
+</head>
+<body id="index-page">
+
+  <div class="dropdown">
+    <img src="images/anaduomeno.png" class="dropdown-toggle" id="dropdownMenuButton"></a>
+    <div class="dropdown-menu" id="dropdownMenu">
+        <a href="clothes.html" data-text="Clothes"><img src="images/clothes.png" id="image1" class="dropdown-icon"></a>
+        <a href="about.html"  data-text="about"><img src="images/about.png" id="image2" class="dropdown-icon"></a>
+        <a href="contact.html" data-text="Contact"><img src="images/contact.png" id="image3" class="dropdown-icon"></a>
+    </div>
+  </div>
+  
+ 
+  <script src="index.js"></script>
+
+</body>
+</html>
+

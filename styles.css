@@ -1,0 +1,71 @@
+body, html {
+  height: 100%;
+  background-color: rgb(233, 231, 217);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Helvetica';
+}
+
+/* Main Page */
+#index-page {
+  overflow: hidden;
+}
+
+/* -------------MAIN PAGE----------------------------------------- */
+
+/* To eikonio tou menu */
+#dropdownMenuButton {
+  width: 50%;
+  height: auto;
+  max-width: 1300px;
+  display: block;
+  margin: 0 auto;
+  margin-top: -150px;
+}
+
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  align-items: center;
+  gap: 10px;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  opacity: 0;
+}
+
+@media screen and (min-width: 601px) {
+  #dropdownMenuButton:hover + .dropdown-menu, .dropdown-menu:hover {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+
+
+.dropdown-menu a {
+  display: block;
+  width: 40%;
+  max-width: 650px; /* Ensure it scales properly */
+}
+
+/* Menu Images */
+#image0, #image1, #image2, #image3 {
+  height: auto;
+  width: 120px;
+  padding-left: 44px;
+}
+
+/* Icons animation */
+.dropdown-icon {
+  transition: transform 0.5s ease;
+}
+
+/* Hover images */
+@media screen and (min-width: 601px) {
+.dropdown-icon:hover {
+  transform: translateX(10px);
+}
+}
