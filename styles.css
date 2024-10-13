@@ -525,3 +525,12 @@ input[type="submit"] {
   max-width: 100%;
   
 }
+
+/* Apply only on mobile screens */
+@media (max-width: 600px) {
+  a:focus, a:focus-visible,
+  img:focus, img:focus-visible {
+      outline: none;
+      box-shadow: none;
+  }
+}
