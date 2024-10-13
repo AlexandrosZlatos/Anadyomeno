@@ -525,37 +525,13 @@ input[type="submit"] {
   max-width: 100%;
   
 }
-
-/* Specific focus and click animation styles */
-.dropdown-menu a:focus, 
-.dropdown-menu a:active,
-img.product-image:focus, 
-img.product-image:active {
-    outline: none !important;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
-    transform: scale(1.05) !important;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.custom-focus {
+  outline: 2px solid yellow !important; /* Yellow outline */
+  outline-offset: 4px;
+  box-shadow: 0 0 10px rgba(255, 255, 0, 0.5) !important;
+  transition: outline 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* For mobile screens */
-@media (max-width: 600px) {
-    .dropdown-menu a:focus, .dropdown-menu a:active,
-    img.product-image:focus, img.product-image:active {
-        outline: none !important;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
-        transform: scale(1.05) !important;
-        background-color: rgba(255, 255, 255, 0.2) !important;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-    }
-    
-    /* Reset after animation */
-    .dropdown-menu a:focus:not(:focus-visible), 
-    img.product-image:focus:not(:focus-visible),
-    .dropdown-menu a:active:not(:focus-visible), 
-    img.product-image:active:not(:focus-visible) {
-        transform: scale(1) !important;
-        box-shadow: none !important;
-        background-color: transparent !important;
-    }
+a, img {
+  -webkit-tap-highlight-color: rgba(0,0,0,0); /* Removes default tap highlight */
 }
-

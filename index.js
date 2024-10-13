@@ -567,6 +567,19 @@ imageStack.addEventListener('touchmove', onDrag);
 document.addEventListener('touchend', endDragging);
 
 
+// Apply custom focus effect on tap for links and images
+document.querySelectorAll('a, img').forEach((element) => {
+    element.addEventListener('click', function(event) {
+        // Remove the 'custom-focus' class from all elements first
+        document.querySelectorAll('.custom-focus').forEach(el => el.classList.remove('custom-focus'));
+
+        // Add the 'custom-focus' class to the tapped element
+        element.classList.add('custom-focus');
+
+        // Optionally, remove the class after a short delay to simulate a temporary effect
+        setTimeout(() => element.classList.remove('custom-focus'), 300);
+    });
+});
 
 
 
