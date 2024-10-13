@@ -525,13 +525,15 @@ input[type="submit"] {
   max-width: 100%;
   
 }
+/* Custom focus effect for links and images on tap */
 .custom-focus {
-  outline: 2px solid yellow !important; /* Yellow outline */
+  outline: 3px solid yellow !important; /* Make the outline more noticeable */
   outline-offset: 4px;
-  box-shadow: 0 0 10px rgba(255, 255, 0, 0.5) !important;
+  box-shadow: 0 0 15px rgba(255, 255, 0, 0.7) !important; /* Strong yellow glow */
   transition: outline 0.3s ease, box-shadow 0.3s ease;
 }
 
+
 a, img {
-  -webkit-tap-highlight-color: rgba(0,0,0,0); /* Removes default tap highlight */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.2); /* Semi-transparent black */
 }
