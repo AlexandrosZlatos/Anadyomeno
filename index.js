@@ -567,21 +567,6 @@ imageStack.addEventListener('touchmove', onDrag);
 document.addEventListener('touchend', endDragging);
 
 
-document.querySelectorAll('a, img').forEach((element) => {
-    element.addEventListener('click', function(event) {
-        console.log("Element clicked:", element); // Log to confirm click
-        event.preventDefault();
-
-        // Remove 'custom-focus' from all other elements
-        document.querySelectorAll('.custom-focus').forEach(el => el.classList.remove('custom-focus'));
-
-        // Add 'custom-focus' to the tapped element
-        element.classList.add('custom-focus');
-
-        // Remove 'custom-focus' after 300ms to create the temporary effect
-        setTimeout(() => element.classList.remove('custom-focus'), 300);
-    });
-});
 
 
 
