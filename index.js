@@ -566,9 +566,8 @@ imageStack.addEventListener('touchstart', startDragging);
 imageStack.addEventListener('touchmove', onDrag);
 document.addEventListener('touchend', endDragging);
 
-
-// Detect orientation change
-function checkOrientation() {
+// Check if the device is in landscape mode
+function handleOrientation() {
     if (window.innerHeight < window.innerWidth) {
         document.body.classList.add('landscape-mode');
     } else {
@@ -577,9 +576,8 @@ function checkOrientation() {
 }
 
 // Run the check on load and on orientation change
-window.addEventListener('load', checkOrientation);
-window.addEventListener('resize', checkOrientation);
-
+window.addEventListener('load', handleOrientation);
+window.addEventListener('resize', handleOrientation);
 
 
 
