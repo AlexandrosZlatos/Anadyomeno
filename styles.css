@@ -530,3 +530,10 @@ input[type="submit"] {
 a, img {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.2); /* Semi-transparent black */
 }
+
+/* Hide main content and show a warning in landscape mode */
+.landscape-mode #main-content, 
+.landscape-mode .dropdown, 
+.landscape-mode .container {
+    display: none;
+}
