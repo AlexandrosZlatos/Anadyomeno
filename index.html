@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Anadyomeno</title>
-  <link rel="manifest" href="/manifest.json">
+  
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="shortcut icon" type="image/x-icon" href="images/logo.png"/>
 
   <style>
-    @media (max-width: 768px) {   
+    @media (max-width: 768px) and (orientation: portrait) {   
               .dropdown {
                 text-align: center;
                 
@@ -29,9 +29,43 @@
               display: block; 
               margin: 0 auto; 
               padding: 0;
-            }
-              
+            }  
         }
+
+        @media (max-width: 1024px) and (orientation: landscape) {   
+          
+          
+        .dropdown {
+            width: 50%;
+            margin-top: 100px;
+        }
+
+        .dropdown-menu {
+            flex-direction: row; /* Arrange dropdown items in a row for more horizontal space */
+            justify-content: space-around;
+            visibility: visible;
+            opacity: 1;
+            text-align: center;
+        }
+
+        #image1, #image2, #image3 {
+            width: 100%; /* Adjust the width to better fit the landscape layout */
+            max-width: 700px;
+            margin: 0;
+            padding: 0;
+            display: block; 
+        }
+    }
+
+        @media only screen and (min-width: 601px) and (max-width: 1024px) {
+            body {
+              font-size: 16px;
+              padding: 20px;
+            }
+          }
+
+          
+
   </style>
 </head>
 <body id="index-page">
