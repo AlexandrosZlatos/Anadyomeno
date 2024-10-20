@@ -9,7 +9,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="images/logo.png"/>
 
   <style>
-    @media (max-width: 768px) and (orientation: portrait) {   
+        @media (max-width: 600px) and (orientation: portrait) {   
               .dropdown {
                 text-align: center;
                 
@@ -56,14 +56,72 @@
             display: block; 
         }
     }
+    /* Tablet view portrait */
+        @media only screen and (min-width: 601px) and (max-width: 1024px) and (orientation: portrait) {
+          body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-size: 14px; /* Slightly smaller font size for a more compact look */
+            padding: 20px;
+            margin: 0;
+        }
 
-        @media only screen and (min-width: 601px) and (max-width: 1024px) {
-            body {
-              font-size: 16px;
-              padding: 20px;
-            }
+        #dropdownMenuButton {
+          width: 80%; /* You can change this value to your desired width */
+        }
+     
+        .dropdown-menu {
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center;
+            gap: 10px; /* Add a small gap between items */
+            text-align: center;
+            visibility: visible;
+            opacity: 1;
+        }
+
+
+        #image1, #image2, #image3 {
+            width: 100%; /* Scale down images slightly */
+            max-width: 350px; /* Restrict max size for tablet view */
+            display: block;
+            padding: 0;
+
+        }
           }
 
+
+          /* Tablet view landscape */
+        @media (min-width: 768px) and (max-width: 1200px) and (orientation: landscape) {
+         
+
+            .dropdown-menu {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center; /* Ensures the items are aligned correctly */
+                visibility: visible;
+                opacity: 1;
+            }
+
+            .dropdown-menu a {
+                width: 100%; /* Adjust as needed to fit the screen */
+                text-align: center;
+            }
+
+            #image1, #image2, #image3 {
+            width: 100%; /* Scale down images slightly */
+            max-width: 350px; /* Restrict max size for tablet view */
+            display: block;
+            padding: 0;
+            margin: 0;
+
+        }
+
+          
+          }   
           
 
   </style>
