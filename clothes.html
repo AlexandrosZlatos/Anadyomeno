@@ -54,7 +54,7 @@
             height: auto; 
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 600px) and (orientation: portrait) {
 
             body, html {
                 height: auto; 
@@ -125,41 +125,27 @@
                 transform: translate(-50%, -50%);
       
             }
-
-            /* Portrait tablets and up */
-    @media (min-width: 600px) and (max-width: 1024px) {
-        /* Center and resize dropdown menu items */
-        .dropdown {
-            text-align: center;
-            width: 100%; /* Adjust width to fit better on tablet */
-        }
-
-        /* Adjust dropdown menu layout */
-        .dropdown-menu {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            visibility: visible;
-            opacity: 1;
-        }
-
-        /* Scale images for tablet view */
-        #image1, #image2, #image3 {
-            width: 70%; /* Adjust the size to make images fit better */
-            max-width: 500px;
-            display: block;
-            margin: 0 auto;
-            padding: 10px;
-        }
-
-        /* Additional styling if needed */
-        #dropdownMenuButton {
-            max-width: 300px; /* Scale the main dropdown button */
-            margin-top: 20px;
-        }
-    }
-
             
+        }
+
+        @media (max-width: 1024px) and (orientation: landscape) {
+            #images-container {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr); 
+                width: 70%; 
+                margin-top: 55vh;
+            }
+            .product img {
+                width: 100%; 
+                max-width: 300px; 
+                height: auto; 
+            }
+
+            .product {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
         }
     </style>
 </head>
