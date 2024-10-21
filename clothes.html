@@ -133,7 +133,10 @@
                 display: grid;
                 grid-template-columns: repeat(3, 1fr); 
                 width: 70%; 
-                margin-top: 55vh;
+                margin-top: 200px;
+                height: auto; /* Remove any fixed height */
+                overflow-y: auto; /* Allow scrolling if content exceeds view */
+
             }
             .product img {
                 width: 100%; 
