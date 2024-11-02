@@ -47,28 +47,28 @@
     /* Expand the clothes container height and make it scrollable */
     .clothes-container {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Two items per row */
-        gap: 20px; /* Space between items */
-        max-width: 500px; /* Limit the width */
-        margin: 0 auto; /* Center the container */
+        grid-template-columns: 1fr 1fr; 
+        gap: 20px; 
+        max-width: 500px; 
+        margin: 0 auto;
         padding: 10px;
-        overflow-y: auto; /* Allow scrolling if content exceeds the height */
+        overflow-y: auto; 
         width: 100%;
     }
 
     /* Ensure each .clothes-item is isolated */
     .clothes-item {
         position: relative;
-        z-index: 1; /* Ensures each item is on the same layer */
+        z-index: 1; 
     }
 
     /* Larger image sizes */
     .clothes-item img {
         width: 100%;
-        max-width: 240px; /* Larger image size */
+        max-width: 240px; 
         height: auto;
-        position: relative; /* Ensures each image stays within its container */
-        z-index: 1; /* Makes sure images don’t stack or overlap */
+        position: relative; 
+        z-index: 1; 
     }
 
 
