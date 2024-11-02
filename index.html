@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anadyomeno</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo.png"/>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        @media (max-width: 767px) and (orientation: portrait) { 
+
+        .dropdown-icon{
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .dropdown-content {
+            opacity: 1;
+        }
+
+
+        .dropdown-content a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .dropdown-item {
+            width: 85%;
+            margin: 10px 0; 
+        }
+
+
+        .dropdown-item:hover {
+            transform: none;
+            opacity: 1;
+        }
+
+
+        }
+
+
+        /* Tablet portrait view styles */
+        @media (min-width: 768px) and (max-width: 991px) and (orientation: portrait) {
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 85vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dropdown-content a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dropdown-icon{
+            width: 100%;
+            max-width: 400px;
+        }
+
+
+        .dropdown-content {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            position: static;
+            opacity: 1;
+        }
+
+        .dropdown-item {
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .dropdown-item:hover {
+            transform: none;
+            opacity: 1;
+        }
+        }
+
+        @media (min-width: 992px) and (max-width: 1200px) and (orientation: portrait) {
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dropdown-content a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dropdown-icon{
+            width: 100%;
+            max-width: 500px;
+        }
+
+
+        .dropdown-content {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            position: static;
+            opacity: 1;
+            width: 100%;
+            max-width: 350px; /* Ensures enough space for items */
+
+        }
+
+        .dropdown-item {
+            margin: 0px 0;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .dropdown-item:hover {
+            transform: none;
+            opacity: 1;
+        }
+        }
+
+        /* Landscape mobile */
+        @media (max-width: 767px) and (orientation: landscape) { 
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 85vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dropdown-content a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dropdown-icon{
+            width: 30%;
+            max-width: 350px;
+        }
+
+        .dropdown-content {
+            display: flex;
+            flex-direction: row; /* Arrange items in a row */
+            justify-content: center;
+            align-items: center;
+            position: static;
+            opacity: 1;
+        }
+
+        /* Additional spacing between items */
+        .dropdown-item {
+            margin: 0 15px; /* Horizontal spacing between items */
+            width: 25%;
+        }
+
+        .dropdown-item:hover {
+            transform: none;
+            opacity: 1;
+        }
+        }
+
+        /* Landscape view styles */
+        @media (min-width: 768px) and (max-width: 991px) and (orientation: landscape) {
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 85vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dropdown-content a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dropdown-icon{
+            width: 30%;
+            max-width: 350px;
+        }
+
+        .dropdown-content {
+            display: flex;
+            flex-direction: row; /* Arrange items in a row */
+            justify-content: center;
+            align-items: center;
+            position: static;
+            opacity: 1;
+        }
+
+        /* Additional spacing between items */
+        .dropdown-item {
+            margin: 0 15px; /* Horizontal spacing between items */
+            width: 25%;
+        }
+
+        .dropdown-item:hover {
+            transform: none;
+            opacity: 1;
+        }
+        }
+
+        @media (min-width: 991px) and (max-width: 1200px) and (orientation: landscape) {
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dropdown-content a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dropdown-icon{
+            width: 100%;
+            max-width: 300px;
+        }
+
+
+        .dropdown-content {
+            display: flex;
+            flex-direction: row; /* Arrange items in a row */
+            justify-content: center;
+            align-items: center;
+            position: static;
+            opacity: 1;
+        }
+
+        .dropdown-item {
+            margin: 0px 0;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .dropdown-item:hover {
+            transform: none;
+            opacity: 1;
+        }
+        }
+
+        @media (min-width: 1024px) and (min-resolution: 2dppx) {
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }  
+        .dropdown-item {
+            width: 100%; /* Scale up elements slightly */
+            max-width: 550px;
+            margin: 0 10px;
+
+        }
+
+        .dropdown-icon {
+            max-width: 550px;
+        }
+        .dropdown-content {
+                display: flex;
+                flex-direction: row; /* Arrange items in a row */
+                justify-content: center;
+                align-items: center;
+                position: static;
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="images/anaduomeno.png" alt="Anadyomeno Cigarettes" class="dropdown-icon">
+        <div class="dropdown-content">
+            <a href="clothes.html"><img src="images/clothes.png" alt="Clothes" class="dropdown-item"></a>
+            <a href="clothes.html"><img src="images/about.png" alt="About" class="dropdown-item"></a>
+            <a href="clothes.html"><img src="images/contact.png" alt="Contact" class="dropdown-item"></a>
+        </div>
+    </div>
+</body>
+</html>
