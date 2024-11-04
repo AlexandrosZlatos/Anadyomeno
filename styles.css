@@ -24,6 +24,7 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
+    margin-left: -25vh;
 }
 
 .dropdown-icon {
