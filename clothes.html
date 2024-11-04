@@ -275,6 +275,22 @@
         .dropdown-content a {
                 text-decoration: none;
             }
+
+
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .dropdown-icon {
+            width: 20%; /* Larger size for high-density screens */
+        }
+
+        .clothes-item img {
+            max-width: 100%; /* Ensure images scale properly */
+            height: auto;
+        }
+
+        body {
+            font-size: 1.2rem; /* Adjust font size for better readability */
+        }
+    }
         
           
         }
