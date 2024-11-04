@@ -264,11 +264,13 @@
             opacity: 0; 
         }
         .clothes-container {
-            height: calc(100vh - 10vh); /* Set the height of the container relative to the viewport */
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on mobile devices */
-
-        }
+        width: 100%;
+        max-width: 500px;
+        height: calc(100vh - 10vh); /* Make sure the container doesn't exceed the viewport height */
+        overflow-y: auto; /* Enable scrolling */
+        -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on mobile devices */
+        margin-top: 5vh;
+    }
 
         .dropdown-content a {
                 text-decoration: none;
