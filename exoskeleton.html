@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exoskeleton Jacket</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Main container to center content */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr 1.5fr;
+            gap: 10px;
+            padding: 10px;
+            align-items: start;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <!-- Dropdown icon and content -->
+        <div class="container">
+            <img src="images/anaduomeno.png" alt="Anadyomeno Cigarettes" class="dropdown-icon">
+            <div class="dropdown-content">
+                <a href="clothes.html"><img src="images/clothes.png" alt="Clothes" class="dropdown-item"></a>
+                <a href="clothes.html"><img src="images/about.png" alt="About" class="dropdown-item"></a>
+                <a href="clothes.html"><img src="images/contact.png" alt="Contact" class="dropdown-item"></a>
+            </div>
+        </div>
+
+        <!-- Main image section with thumbnails below -->
+        <div class="main-image-container">
+            <img src="images/IMG_0456.jpg" alt="Exoskeleton Jacket" class="main-image">
+            <div class="thumbnail-container">
+                <img src="images/IMG_0456.jpg" alt="Thumbnail 1" onclick="changeMainImage(this.src)">
+                <img src="images/IMG_0517.jpg" alt="Thumbnail 2" onclick="changeMainImage(this.src)">
+                <img src="images/IMG_0548.jpg" alt="Thumbnail 3" onclick="changeMainImage(this.src)">
+                <img src="images/IMG_0564.jpg" alt="Thumbnail 4" onclick="changeMainImage(this.src)">
+            </div>
+        </div>
+
+        <!-- Clothing details section -->
+        <div class="clothing-details">
+            <h2>Exoskeleton Jacket</h2>
+            <p>This jacket features a bold skeleton design on a sturdy work vest. It’s crafted from durable materials and designed for both style and functionality.</p>
+            <ul>
+                <li>Material: 100% Cotton</li>
+                <li>Color: Brown</li>
+                <li>Size: Medium</li>
+                <li>Brand: Dickies x Anadyomeno</li>
+            </ul>
+        </div>
+
+        <!-- Other images section with title -->
+        <div>
+            <div class="other-title">Others</div>
+            <div class="other-images">
+                <img src="images/IMG_0639.jpg" alt="Other Image 1">
+                <img src="images/IMG_4861.jpg" alt="Other Image 2">
+                <img src="images/IMG_4867 (1).jpg" alt="Other Image 3">
+                <img src="images/image0.jpg" alt="Other Image 4">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to change the main image when a thumbnail is clicked
+        function changeMainImage(src) {
+            document.querySelector('.main-image').src = src;
+        }
+    </script>
+</body>
+</html>
