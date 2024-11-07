@@ -141,11 +141,12 @@ body {
     align-items: center;
     margin: 0;
     padding: 0;
+    max-width: 360px; 
 }
 
 .main-image {
     width: 100%;
-    max-width: 360px; /* Increased main image size */
+    max-width: 360px;
     margin-bottom: 5px;
 }
 
@@ -163,26 +164,35 @@ body {
     max-height: 115px; 
     object-fit: cover;
     cursor: pointer;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.thumbnail-container img:hover {
+    transform: scale(1.05); /* Scale up the image slightly on hover */
 }
 
 /* Clothing details section */
 .clothing-details {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 10px;
-    font-size: 14px;
-    background-color: #fff;
+    font-size: 1.125rem;
+    /* background-color: #fff; */
     box-sizing: border-box;
 }
 
 .clothing-details h2 {
-    font-size: 1.3rem;
-    margin-bottom: 5px;
+    font-size: 2rem;
+    margin-bottom: 0.625rem;
 }
 
-.clothing-details p, .clothing-details ul {
-    margin: 0;
-    padding: 0;
+.clothing-details p {
+    font-size: 1.325rem;
+}
+
+.clothing-details ul{
+    margin-top: 3vh;
+    font-size: 1.025rem;
+
 }
 
 .clothing-details ul {
@@ -203,9 +213,55 @@ body {
 }
 
 .other-images img {
-    width: 80px; 
+    width: 60%; 
     height: auto;
     cursor: pointer;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
 }
 
+.other-images img:hover {
+    transform: scale(1.05); /* Scale up the image slightly on hover */
+}
 
+.details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.button-container {
+    width: 100%; 
+    margin: 2vh auto;
+}
+
+.button {
+    display: inline-block;
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: not-allowed;
+}
+
+.button:hover {
+    background-color: #b3b3b3;
+}
+
+.others-container {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.cart-label {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin-left: 20%; 
+
+}
