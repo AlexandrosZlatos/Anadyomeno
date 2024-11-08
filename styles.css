@@ -148,6 +148,8 @@ body {
     width: 100%;
     max-width: 360px;
     margin-bottom: 5px;
+    cursor: zoom-in;
+
 }
 
 .thumbnail-container {
@@ -264,4 +266,17 @@ body {
     color: #333;
     margin-left: 20%; 
 
+}
+
+.magnifier {
+    position: absolute;
+    border: 3px solid black;
+    border-radius: 50%;
+    width: 150px;  
+    height: 150px;
+    overflow: hidden;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: none; 
 }
