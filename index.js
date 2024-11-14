@@ -4,7 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let magnifier;
     let isActive = false;
 
-    // Function to create and position magnifier
+    function shouldEnableZoom() {
+        return window.innerWidth > 767;
+    }
+
     function createMagnifier(e) {
         if (!magnifier) {
             magnifier = document.createElement('div');
@@ -12,33 +15,32 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.appendChild(magnifier);
         }
         magnifier.style.backgroundImage = `url(${mainImage.src})`;
-        magnifier.style.backgroundSize = `${mainImage.width * 2}px ${mainImage.height * 2}px`; // Adjust zoom factor
+        magnifier.style.backgroundSize = `${mainImage.width * 2}px ${mainImage.height * 2}px`;
         moveMagnifier(e);
-        magnifier.style.display = 'block'; // Show magnifier
+        magnifier.style.display = 'block';
     }
 
-    // Function to move magnifier with mouse
     function moveMagnifier(e) {
         const rect = mainImage.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-
-        magnifier.style.left = `${e.pageX - 75}px`; // Center magnifier on cursor
+        magnifier.style.left = `${e.pageX - 75}px`;
         magnifier.style.top = `${e.pageY - 75}px`;
-        magnifier.style.backgroundPosition = `-${x * 2 - 75}px -${y * 2 - 75}px`; // Adjust background for zoom effect
+        magnifier.style.backgroundPosition = `-${x * 2 - 75}px -${y * 2 - 75}px`;
     }
 
-    // Attach magnifier functionality to the main image
     mainImage.addEventListener('click', (event) => {
-        event.stopPropagation();
-        isActive = !isActive;
+        if (shouldEnableZoom()) { 
+            event.stopPropagation();
+            isActive = !isActive;
 
-        if (isActive) {
-            createMagnifier(event); // Create and show magnifier
-            mainImage.addEventListener('mousemove', moveMagnifier);
-            mainImage.style.cursor = 'zoom-out';
-        } else {
-            removeMagnifier();
+            if (isActive) {
+                createMagnifier(event);
+                mainImage.addEventListener('mousemove', moveMagnifier);
+                mainImage.style.cursor = 'zoom-out';
+            } else {
+                removeMagnifier();
+            }
         }
     });
 
@@ -48,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Function to remove magnifier
     function removeMagnifier() {
         if (magnifier) {
             magnifier.style.display = 'none';
@@ -58,49 +59,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Change the main image when a thumbnail is clicked
     thumbnails.forEach(thumbnail => {
         thumbnail.addEventListener('click', (event) => {
-            mainImage.src = thumbnail.src; // Update main image to clicked thumbnail's source
+            mainImage.src = thumbnail.src;
             if (isActive) {
-                removeMagnifier(); 
+                removeMagnifier();
             }
         });
     });
 });
 
-// Select the dropdown icon, content, and overlay
+
 const dropdownIcon = document.querySelector('.dropdown-icon');
-const dropdownContent = document.querySelector('.dropdown-content');
-const overlay = document.querySelector('.overlay');
-dropdownIcon.addEventListener('click', function () {
-    const isDropdownVisible = dropdownContent.classList.contains('show');
-    dropdownContent.classList.toggle('show');
-    document.body.classList.toggle('dropdown-active');
+    const dropdownContent = document.querySelector('.dropdown-content');
+    const overlay = document.querySelector('.overlay');
 
-    if (isDropdownVisible) {
-        dropdownContent.style.opacity = '0';
-        dropdownContent.style.pointerEvents = 'none';
+    dropdownIcon.addEventListener('click', (event) => {
+        event.preventDefault();
+        document.body.classList.toggle('dropdown-active');
+        document.body.classList.toggle('no-scroll'); 
+
+        if (document.body.classList.contains('dropdown-active')) {
+            dropdownContent.style.display = 'flex';
+            overlay.style.display = 'block';
+        } else {
+            dropdownContent.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    });
+
+    overlay.addEventListener('click', () => {
+        document.body.classList.remove('dropdown-active');
+        document.body.classList.remove('no-scroll'); 
+        dropdownContent.style.display = 'none';
         overlay.style.display = 'none';
-    } else {
-        dropdownContent.style.opacity = '1';
-        dropdownContent.style.pointerEvents = 'auto';
-        overlay.style.display = 'block';
-    }
-});
-
-// Hide the dropdown and overlay when the overlay is clicked
-overlay.addEventListener('click', function () {
-    dropdownContent.classList.remove('show');
-    dropdownContent.style.opacity = '0';
-    dropdownContent.style.pointerEvents = 'none';
-    document.body.classList.remove('dropdown-active');
-    overlay.style.display = 'none';
-});
-
-// change the main image when a thumbnail is clicked
-function changeMainImage(src) {
-    document.querySelector('.main-image').src = src;
-}
+    });
 
 
