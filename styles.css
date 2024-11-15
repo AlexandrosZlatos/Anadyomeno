@@ -27,7 +27,7 @@ body {
 }
 
 .dropdown-icon {
-    max-width: 250px;
+    max-width: 16vw; /* 30% of the viewport width, adjust as needed */
     height: auto;
 }
 
@@ -49,15 +49,14 @@ body {
 }
 
 .dropdown-item {
-    width: 150px;
-    margin: 5px 0;
+    width: 9.5vw; /* 20% of the viewport width; adjust as needed */
+    margin: 1vh 0; /* Vertical margin based on viewport height */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     opacity: 0.8;
     transition: transform 0.3s, opacity 0.3s;
     cursor: pointer; 
-
 }
 
 .dropdown-item:hover {
@@ -93,8 +92,8 @@ body {
 /* Clothes */
 .clothes-page .main-content {
     display: flex;
-    gap: 20px;
-    padding: 20px;
+    gap: 2vw;
+    padding: 1vw; 
     justify-content: center;
 }
 
@@ -102,17 +101,16 @@ body {
 .clothes-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 0.6vw; 
     width: 60%;
     margin-top: 5vh; 
-    max-height: 500px; 
+    max-height: 70vh; 
     overflow-y: auto; 
-    border: 2px solid #ccc;
-    padding: 5px;
-    border-radius: 5px; 
+    border: 0.2vw solid #ccc;
+    padding: 0.3vw;
+    border-radius: 0.5vw; 
     cursor: auto;
     background-color: aliceblue;
-
 }
 
 .clothes-item img {
@@ -141,29 +139,28 @@ body {
     align-items: center;
     margin: 0;
     padding: 0;
-    max-width: 360px; 
+    max-width: 100%; 
 }
 
 .main-image {
     width: 100%;
-    max-width: 360px;
-    margin-bottom: 5px;
+    max-width: 100%;
+    margin-bottom: 0.5vh;
     cursor: zoom-in;
-
 }
 
 .thumbnail-container {
     display: flex;
     justify-content:center; 
     width: 100%; 
-    margin-top: 5px;
-    gap: 5px;
+    margin-top: 0.5vh;
+    gap: 0.6vw;
 }
 
 .thumbnail-container img {
     width: auto;
     height: 100%;
-    max-height: 115px; 
+    max-height: 16.5vh; 
     object-fit: cover;
     cursor: pointer;
     transition: transform 0.3s ease; /* Smooth transition for hover effect */
@@ -205,13 +202,13 @@ body {
 /* Other images section */
 .other-title {
     font-size: 1.2rem;
-    margin-bottom: 5px;
+    margin-bottom: 0.5vh;
 }
 
 .other-images {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 0.4vw;
 }
 
 .other-images img {
