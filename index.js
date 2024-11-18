@@ -70,14 +70,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-const dropdownIcon = document.querySelector('.dropdown-icon');
+    const dropdownIcon = document.querySelector('.dropdown-icon');
     const dropdownContent = document.querySelector('.dropdown-content');
     const overlay = document.querySelector('.overlay');
 
     dropdownIcon.addEventListener('click', (event) => {
-        event.preventDefault();
+        event.stopPropagation();
         document.body.classList.toggle('dropdown-active');
-        document.body.classList.toggle('no-scroll'); 
+        document.body.classList.toggle('no-scroll');
 
         if (document.body.classList.contains('dropdown-active')) {
             dropdownContent.style.display = 'flex';
@@ -88,11 +88,21 @@ const dropdownIcon = document.querySelector('.dropdown-icon');
         }
     });
 
+    document.addEventListener('click', (event) => {
+        if (!dropdownIcon.contains(event.target) && !dropdownContent.contains(event.target)) {
+            document.body.classList.remove('dropdown-active');
+            document.body.classList.remove('no-scroll');
+            dropdownContent.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    });
+
     overlay.addEventListener('click', () => {
         document.body.classList.remove('dropdown-active');
-        document.body.classList.remove('no-scroll'); 
+        document.body.classList.remove('no-scroll');
         dropdownContent.style.display = 'none';
         overlay.style.display = 'none';
     });
+
 
 

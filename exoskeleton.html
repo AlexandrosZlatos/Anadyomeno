@@ -21,7 +21,7 @@
             align-items: start;
         }
 
-        @media (max-width: 767px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+        @media (max-width: 767px) and (orientation: portrait) and (min-resolution: 192dpi) {
 
             body {
                 display: flex;
@@ -33,6 +33,9 @@
             
             .main-image{
                 width: 95%;
+            }
+            .container {
+                width: 100vw; /* Full width of the screen */
             }
 
             .dropdown-icon {
@@ -133,7 +136,7 @@
                 top: 110%; 
                 left: 50%;
                 transform: translateX(-50%);
-                width: 100%;
+                width: 60%;
                 height: auto;
                 gap: 20px; 
                 z-index: 10;
@@ -171,7 +174,7 @@
     <div class="main-content">
         <!-- Dropdown icon and content -->
         <div class="container">
-            <img src="images/anaduomeno.png" alt="Anadyomeno Cigarettes" class="dropdown-icon">
+                <img src="images/anaduomeno.png" alt="Dropdown Icon" class="dropdown-icon">
             <div class="dropdown-content">
                 <a href="clothes.html" data-text="Clothes"><img src="images/clothes.png" alt="Clothes" class="dropdown-item"></a>
                 <a href="clothes.html" data-text="About"><img src="images/about.png" alt="About" class="dropdown-item"></a>
