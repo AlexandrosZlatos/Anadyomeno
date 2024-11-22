@@ -316,14 +316,76 @@
         @media (max-width: 767px) and (orientation: landscape) { 
             
             body{
+                display: flex;
+                flex-direction: column; /* Stack elements vertically */
+                align-items: center;
                 min-height: 100vh;
                 margin: 0;
                 overflow-y: auto;
             }
-            .main-content{
-                padding-top: 2%;
+
+            .container {
+                width: 100%;
+                display: flex; /* Flexbox layout */
+    justify-content: center; /* Center the content */
+    align-items: center; /* Vertically align the content */
+    height: auto;
+    margin: 0; /* Remove any additional spacing */
+    padding: 0; /* Remove padding */
+    border: none; /* Ensure no borders are applied */
                 
             }
+            .dropdown-icon {
+                width: 40vw;
+                height: auto;
+            }
+            .main-content{
+                padding-top: 2%;
+                display: grid;
+                grid-template-columns: 1fr 1fr; /* Adjust grid layout */
+                gap: 0; /* Maintain spacing */
+                width: 100%;
+            }
+
+            .container{
+                grid-column: 1 / -1; /* Keep the main image in the first column */
+                padding-bottom: 2%;
+
+            }
+
+            .main-image-container {
+                grid-column: 1 / 2; /* Keep the main image in the first column */
+                }
+
+            .details-container {
+                grid-column: 2 / 3; /* Keep the details in the second column */
+                }
+
+            .others-container {
+                grid-column: 1 / -1; /* Move "Others" below the grid */
+                margin-top: 5vh; /* Add space above "Others" */
+                }
+
+            .others-container {
+                grid-column: 1 / -1; /* Make the "Others" section span the full width */
+                margin-top: 5vh; /* Add some space above the "Others" section */
+                display: flex; /* Enable flexbox layout for the section */
+                flex-direction: column; /* Stack the title and images vertically */
+                align-items: center; /* Center the content */
+                padding: 2vh 5vw; /* Add padding: 2vh on top/bottom and 5vw on left/right */
+
+                
+            }
+
+            .other-images {
+                display: flex; /* Arrange images in a row */
+                flex-direction: row; /* Ensure images are side by side */
+                gap: 1vw; /* Add spacing between the images */
+                justify-content: center; /* Center the row within the container */
+                flex-wrap: nowrap; /* Prevent wrapping to the next line */
+                width: 30vw;
+            }
+
 
             .dropdown-container {
                 justify-self: center; /* Center the dropdown horizontally */
@@ -361,9 +423,6 @@
                 width: 10vw;
                 height: auto;
             }
-
-         
-
 
             .cart-label {
                 display: none; /* Completely hide the cart label */
