@@ -4,151 +4,143 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anadyomeno</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" type="image/x-icon" href="images/logo.png"/>
+    <link rel="stylesheet" href="styles.css">
+
     <style>
-    
-    body {
-        display: grid;
-        grid-template-columns: 1fr 2fr; /* Left for dropdown, right for slider */
-        align-items: center; /* Center items vertically */
-        justify-content: center;
-        height: 50vh; /* Full viewport height */
-        margin: 0;
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            height: 100vh; 
+            overflow: hidden; 
         }
 
-    .container {
-        position: absolute; /* Fixes the dropdown in one place */
-        top: 1rem; /* Space from the top */
-        left: 1rem; /* Space from the left */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+        .container {
+            display: flex; 
+            align-items: center; 
+            justify-content: flex-start; 
+            position: absolute; 
+            top: 23%; 
+            left: 2%; 
+            transform: translateY(-50%);
+        }
 
-    .dropdown-icon {
-        max-width: 15vw; /* Adjust size of dropdown icon */
-        height: auto;
-        margin-bottom: 1rem;
-        cursor: pointer;
-    }
-
-    .dropdown-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: -2rem;
-    }
-
-    .dropdown-item {
-        width: 10vw; /* Smaller size for dropdown items */
-        transition: transform 0.3s, opacity 0.3s;
-        cursor: pointer;
-    }
-
-     
+        .dropdown-icon {
+            width: 80%; 
+            height: auto;
+        }
+ 
     </style>
 </head>
-<body id="about-page">
+<body>
     <div class="container">
         <img src="images/anaduomeno.png" alt="Anadyomeno Cigarettes" class="dropdown-icon">
         <div class="dropdown-content">
-            <a href="index.html"  data-text="Home"><img src="images/home.png" alt="Home" class="dropdown-item"></a>
-            <a href="clothes.html"  data-text="about"><img src="images/about.png" alt="About" class="dropdown-item"></a>
-            <a href="clothes.html"  data-text="Contact"><img src="images/contact.png" alt="Contact" class="dropdown-item"></a>
+            <a href="clothes.html"><img src="images/clothes.png" alt="Clothes" class="dropdown-item"></a>
+            <a href="clothes.html"><img src="images/about.png" alt="About" class="dropdown-item"></a>
+            <a href="clothes.html"><img src="images/contact.png" alt="Contact" class="dropdown-item"></a>
         </div>
     </div>
+
     <div class="slider-container">
         <div class="image-stack">
-            <img src="images/wtf.jpg" class="image wtf" alt="Image 1" draggable="false">
-            <img src="images/wtf2.png" class="image wtf" alt="Image 2" draggable="false">
-            <img src="images/wtf4.png" class="image wtf" alt="Image 3" draggable="false">
-            <img src="images/wtf3.png" class="image wtf" alt="Image 4" draggable="false">
+            <img src="images/wtf.jpg" alt="Image 1" class="image">
+            <img src="images/wtf2.png" alt="Image 2" class="image">
+            <img src="images/wtf4.png" alt="Image 3" class="image">
+            <img src="images/wtf3.png" alt="Image 4" class="image">
         </div>
-        <div id="image-tracker">1/4</div>
     </div>
-
+    
     <script>
-        const imageStack = document.querySelector('.image-stack');
-        const images = Array.from(imageStack.querySelectorAll('.wtf'));
-        const imageTracker = document.getElementById('image-tracker');
-        let currentIndex = 0;
-        let startX = 0;
+        const sliderContainer = document.querySelector('.slider-container');
+        const imageStack = document.querySelectorAll('.image');
+
         let isDragging = false;
-        let moveX = 0;
-        const switchThreshold = 100; // Drag distance to switch image
-        const dragThreshold = 30; // Minimum drag distance to consider it a drag action
+        let startX = 0;
+        let currentIndex = 0;
 
-        // Function to update the image tracker
-        const updateTracker = () => {
-            imageTracker.textContent = `${currentIndex + 1}/${images.length}`;
-        };
+        imageStack.forEach((img) => {
+            img.addEventListener('dragstart', (e) => e.preventDefault());
+        });
 
-        // Initialize images' initial position and visibility
-        const updateImageStack = () => {
-            images.forEach((img, i) => {
-                if (i === currentIndex) {
-                    img.style.transform = 'translateX(0) rotateY(0)';
-                    img.style.opacity = '1';
-                    img.style.zIndex = images.length; // Top image
-                } else {
-                    img.style.transform = `translateX(${(i - currentIndex) * 20}px) rotateY(${(i - currentIndex) * -10}deg)`;
-                    img.style.opacity = '0.5';
-                    img.style.zIndex = images.length - i;
-                }
-            });
-            updateTracker();
-        };
+        sliderContainer.addEventListener('mousedown', startDrag);
+        sliderContainer.addEventListener('touchstart', startDrag);
 
-        // Initialize the first display
-        updateImageStack();
+        sliderContainer.addEventListener('mousemove', drag);
+        sliderContainer.addEventListener('touchmove', drag);
 
-        // Start dragging
-        const startDragging = (e) => {
+        sliderContainer.addEventListener('mouseup', endDrag);
+        sliderContainer.addEventListener('mouseleave', endDrag);
+        sliderContainer.addEventListener('touchend', endDrag);
+
+        function startDrag(e) {
             isDragging = true;
-            startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
-            moveX = 0; // Reset moveX on drag start
-            imageStack.style.cursor = 'grabbing';
-        };
+            startX = getPositionX(e);
+            sliderContainer.style.cursor = 'grabbing';
+        }
 
-       // Dragging effect
-        const onDrag = (e) => {
+        function drag(e) {
             if (!isDragging) return;
-            moveX = (e.type.includes('mouse') ? e.clientX : e.touches[0].clientX) - startX;
 
-            // Check if drag distance is sufficient to switch images
-            if (moveX > switchThreshold && currentIndex > 0) {
-                currentIndex -= 1;
-                startX += switchThreshold; // Reset start point to continue dragging
-                moveX = 0;
-            } else if (moveX < -switchThreshold && currentIndex < images.length - 1) {
-                currentIndex += 1;
-                startX -= switchThreshold; // Reset start point to continue dragging
-                moveX = 0;
+            const currentPosition = getPositionX(e);
+            const movedBy = currentPosition - startX;
+
+            imageStack.forEach((img, index) => {
+                const offset = index - currentIndex + movedBy / 300; 
+                img.style.transform = `
+                    translateX(${offset * 15}%) 
+                    translateZ(${offset * -50}px) 
+                    rotateY(${offset * 5}deg)
+                `;
+                img.style.opacity = `${1 - Math.abs(offset) * 0.2}`;
+                img.style.zIndex = `${4 - Math.abs(Math.round(offset))}`;
+            });
+        }
+
+        function endDrag(e) {
+            if (!isDragging) return;
+            isDragging = false;
+            sliderContainer.style.cursor = 'grab';
+
+            const endPosition = getPositionX(e);
+            const movedBy = endPosition - startX;
+
+            if (movedBy < -50 && currentIndex < imageStack.length - 1) {
+                currentIndex++;
+            } else if (movedBy > 50 && currentIndex > 0) {
+                currentIndex--; 
             }
-            updateImageStack();
-        };
 
-        // End dragging
-        const endDragging = () => {
-            // Only process drag end if the drag distance is above the threshold
-            if (Math.abs(moveX) > dragThreshold) {
-                isDragging = false;
-            }
-            imageStack.style.cursor = 'grab';
-        };
+            updateImages();
+        }
 
-        // Mouse events
-        imageStack.addEventListener('mousedown', startDragging);
-        imageStack.addEventListener('mousemove', onDrag);
-        document.addEventListener('mouseup', endDragging);
+        function updateImages() {
+            imageStack.forEach((img, index) => {
+                const offset = index - currentIndex; 
+                img.style.transform = `
+                    translateX(${offset * 15}%) 
+                    translateZ(${offset * -50}px) 
+                    rotateY(${offset * 5}deg)
+                `;
+                img.style.opacity = `${1 - Math.abs(offset) * 0.5}`;
+                img.style.filter = offset === 0 ? 'none' : `grayscale(${50 + Math.abs(offset) * 25}%)`; 
+                img.style.zIndex = `${4 - Math.abs(offset)}`; 
+            });
+        }
 
-        // Touch events for mobile
-        imageStack.addEventListener('touchstart', startDragging);
-        imageStack.addEventListener('touchmove', onDrag);
-        document.addEventListener('touchend', endDragging);
+        function getPositionX(e) {
+            return e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+        }
 
-    </script> 
-    <script src="index.js"></script>
+        updateImages();
+
+    </script>
+
+<script src="index.js"></script>
+
 </body>
 </html>

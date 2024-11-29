@@ -278,51 +278,60 @@ body {
     display: none; 
 }
 
+/* About */
 
 .slider-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute; /* Allows precise placement */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust for element dimensions */
-    width: 60%; /* Adjust slider width */
-    max-width: 800px;
-    height: 500px; /* Fixed height for slider */
-      overflow: hidden; /* Prevent overflow from showing */
-}
-
-.image-stack {
-    display: flex;
+    width: 100%; 
+    max-width: 45vw; 
+    height: 75vh; 
+    aspect-ratio: 16 / 9; 
+    margin: 0 auto; 
+    overflow: hidden;
     position: relative;
-    height: 100%;
+  
+}
+.image-stack {
+    position: relative;
     width: 100%;
-    perspective: 1000px;
+    height: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 0.5s ease-in-out; /* Smooth slide transitions */
+    perspective: 1000px;
 }
 
 .image {
-    position: absolute;
-    width: 65%; /* Adjusted for stacking */
+    position: absolute; 
+    width: 80%; 
     height: auto;
-    transform-origin: center;
+    object-fit: contain;
     transition: transform 0.5s ease, opacity 0.5s ease;
-    object-fit: cover;
-    cursor: grab; /* Add a grab cursor */
-
 }
 
-#image-tracker {
-    position: absolute;
-    bottom: 20px; /* Place it near the bottom of the slider container */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Adjust for centering */
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-    z-index: 10; /* Ensure it is visible above other elements */
+.image:nth-child(1) {
+    transform: translateX(0) translateZ(0px) rotateY(0deg);
+    z-index: 4;
+    opacity: 1; 
+    filter: none; 
+}
+
+.image:nth-child(2) {
+    transform: translateX(10%) translateZ(-50px) rotateY(-5deg);
+    z-index: 3;
+    opacity: 0.5; 
+    filter: grayscale(80%); 
+}
+
+.image:nth-child(3) {
+    transform: translateX(20%) translateZ(-100px) rotateY(-10deg);
+    z-index: 2;
+    opacity: 0.3;
+    filter: grayscale(90%); 
+}
+
+.image:nth-child(4) {
+    transform: translateX(30%) translateZ(-150px) rotateY(-15deg);
+    z-index: 1;
+    opacity: 0.2; 
+    filter: grayscale(100%);
 }
