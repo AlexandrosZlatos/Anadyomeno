@@ -68,3 +68,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+const overlay = document.querySelector('.overlay');
+
+function showOverlay() {
+    overlay.classList.add('active');
+}
+
+function hideOverlay() {
+    overlay.classList.remove('active');
+}
+
+const dropdownIcon = document.querySelector('.dropdown-icon');
+dropdownIcon.addEventListener('click', showOverlay);
+
+overlay.addEventListener('click', hideOverlay);
