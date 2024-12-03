@@ -33,7 +33,34 @@
             width: 80%; 
             height: auto;
         }
- 
+
+        @media (max-width: 767px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+        .container {
+            position: absolute;
+            top: 2%; 
+            left: 50%;
+            transform: translate(-50%, 0); 
+        }
+
+        .dropdown-icon {
+            max-width: none; 
+            width: 50vw;
+            height: auto;
+        }
+
+        .slider-container {
+            max-width: none; 
+            width: 90vw; 
+            height: 50vh; 
+            position: relative; 
+            margin-top: 10vh; /* Moves slider container further down */
+        }
+
+        .slider-container .image {
+            width: 100%; 
+            height: auto;
+        }
+    }
     </style>
 </head>
 <body>
