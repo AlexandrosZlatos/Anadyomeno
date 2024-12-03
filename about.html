@@ -83,87 +83,95 @@
     </div>
     
     <script>
-        const sliderContainer = document.querySelector('.slider-container');
-        const imageStack = document.querySelectorAll('.image');
+       document.addEventListener('DOMContentLoaded', () => {
+    const sliderContainer = document.querySelector('.slider-container');
+    const imageStack = document.querySelectorAll('.image');
 
-        let isDragging = false;
-        let startX = 0;
-        let currentIndex = 0;
+    let isDragging = false;
+    let startX = 0;
+    let currentIndex = 0;
 
-        imageStack.forEach((img) => {
-            img.addEventListener('dragstart', (e) => e.preventDefault());
+    imageStack.forEach((img) => {
+        img.addEventListener('dragstart', (e) => e.preventDefault());
+    });
+
+    // Add event listeners for both mouse and touch
+    sliderContainer.addEventListener('mousedown', startDrag);
+    sliderContainer.addEventListener('touchstart', startDrag, { passive: true });
+
+    sliderContainer.addEventListener('mousemove', drag);
+    sliderContainer.addEventListener('touchmove', drag, { passive: true });
+
+    sliderContainer.addEventListener('mouseup', endDrag);
+    sliderContainer.addEventListener('mouseleave', endDrag);
+    sliderContainer.addEventListener('touchend', endDrag);
+
+    function startDrag(e) {
+        isDragging = true;
+        startX = getPositionX(e);
+        sliderContainer.style.cursor = 'grabbing';
+    }
+
+    function drag(e) {
+        if (!isDragging) return;
+
+        const currentPosition = getPositionX(e);
+        const movedBy = currentPosition - startX;
+
+        // Update image positions during dragging
+        imageStack.forEach((img, index) => {
+            const offset = index - currentIndex + movedBy / 300; // Adjust sensitivity
+            img.style.transform = `
+                translateX(${offset * 15}%) 
+                translateZ(${offset * -50}px) 
+                rotateY(${offset * 5}deg)
+            `;
+            img.style.opacity = `${1 - Math.abs(offset) * 0.2}`;
+            img.style.zIndex = `${4 - Math.abs(Math.round(offset))}`;
+            img.style.transition = 'none'; // No transition during drag
         });
+    }
 
-        sliderContainer.addEventListener('mousedown', startDrag);
-        sliderContainer.addEventListener('touchstart', startDrag);
+    function endDrag(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        sliderContainer.style.cursor = 'grab';
 
-        sliderContainer.addEventListener('mousemove', drag);
-        sliderContainer.addEventListener('touchmove', drag);
+        const endPosition = getPositionX(e);
+        const movedBy = endPosition - startX;
 
-        sliderContainer.addEventListener('mouseup', endDrag);
-        sliderContainer.addEventListener('mouseleave', endDrag);
-        sliderContainer.addEventListener('touchend', endDrag);
-
-        function startDrag(e) {
-            isDragging = true;
-            startX = getPositionX(e);
-            sliderContainer.style.cursor = 'grabbing';
-        }
-
-        function drag(e) {
-            if (!isDragging) return;
-
-            const currentPosition = getPositionX(e);
-            const movedBy = currentPosition - startX;
-
-            imageStack.forEach((img, index) => {
-                const offset = index - currentIndex + movedBy / 300; 
-                img.style.transform = `
-                    translateX(${offset * 15}%) 
-                    translateZ(${offset * -50}px) 
-                    rotateY(${offset * 5}deg)
-                `;
-                img.style.opacity = `${1 - Math.abs(offset) * 0.2}`;
-                img.style.zIndex = `${4 - Math.abs(Math.round(offset))}`;
-            });
-        }
-
-        function endDrag(e) {
-            if (!isDragging) return;
-            isDragging = false;
-            sliderContainer.style.cursor = 'grab';
-
-            const endPosition = getPositionX(e);
-            const movedBy = endPosition - startX;
-
-            if (movedBy < -50 && currentIndex < imageStack.length - 1) {
-                currentIndex++;
-            } else if (movedBy > 50 && currentIndex > 0) {
-                currentIndex--; 
-            }
-
-            updateImages();
-        }
-
-        function updateImages() {
-            imageStack.forEach((img, index) => {
-                const offset = index - currentIndex; 
-                img.style.transform = `
-                    translateX(${offset * 15}%) 
-                    translateZ(${offset * -50}px) 
-                    rotateY(${offset * 5}deg)
-                `;
-                img.style.opacity = `${1 - Math.abs(offset) * 0.5}`;
-                img.style.filter = offset === 0 ? 'none' : `grayscale(${50 + Math.abs(offset) * 25}%)`; 
-                img.style.zIndex = `${4 - Math.abs(offset)}`; 
-            });
-        }
-
-        function getPositionX(e) {
-            return e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+        // Snap to the nearest image
+        if (movedBy < -50 && currentIndex < imageStack.length - 1) {
+            currentIndex++;
+        } else if (movedBy > 50 && currentIndex > 0) {
+            currentIndex--;
         }
 
         updateImages();
+    }
+
+    function updateImages() {
+        imageStack.forEach((img, index) => {
+            const offset = index - currentIndex;
+            img.style.transform = `
+                translateX(${offset * 15}%) 
+                translateZ(${offset * -50}px) 
+                rotateY(${offset * 5}deg)
+            `;
+            img.style.opacity = `${1 - Math.abs(offset) * 0.5}`;
+            img.style.filter = offset === 0 ? 'none' : `grayscale(${50 + Math.abs(offset) * 25}%)`;
+            img.style.zIndex = `${4 - Math.abs(offset)}`;
+            img.style.transition = 'transform 0.3s ease'; // Smooth snapping after drag
+        });
+    }
+
+    function getPositionX(e) {
+        return e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+    }
+
+    updateImages();
+});
+
 
     </script>
 
