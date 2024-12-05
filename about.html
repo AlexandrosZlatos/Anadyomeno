@@ -43,13 +43,13 @@
         }
 
         .dropdown-icon {
-            max-width: none; 
-            width: 50vw;
+            max-width: 280px; 
+            width: 100%;
             height: auto;
         }
 
         .slider-container {
-            max-width: none; 
+            max-width: 400px; 
             width: 90vw; 
             height: 50vh; 
             position: relative; 
@@ -80,11 +80,13 @@
             <img src="images/wtf4.png" alt="Image 3" class="image">
             <img src="images/wtf3.png" alt="Image 4" class="image">
         </div>
+        <div id="image-tracker">1/4</div>
     </div>
     
     <script>
        const sliderContainer = document.querySelector('.slider-container');
 const imageStack = document.querySelectorAll('.image');
+const imageCounter = document.getElementById('image-tracker'); // Counter element
 
 let isDragging = false;
 let startX = 0;
@@ -107,12 +109,16 @@ sliderContainer.addEventListener('mouseup', endDrag);
 sliderContainer.addEventListener('mouseleave', endDrag);
 sliderContainer.addEventListener('touchend', endDrag);
 
+// Function to update the counter
+function updateCounter() {
+    imageCounter.textContent = `${currentIndex + 1}/${imageStack.length}`;
+}
+
 // Function to start dragging
 function startDrag(e) {
     isDragging = true;
     startX = getPositionX(e);
     movedDistance = 0; // Reset drag distance
-    console.log("Drag started at:", startX); // Debug
     sliderContainer.style.cursor = e.type === 'mousedown' ? 'grabbing' : 'default';
 }
 
@@ -123,8 +129,6 @@ function drag(e) {
     const currentPosition = getPositionX(e);
     const movedBy = currentPosition - startX;
     movedDistance = Math.abs(movedBy);
-
-    console.log("Dragging. Moved by:", movedBy); // Debug
 
     // Update image positions during drag
     imageStack.forEach((img, index) => {
@@ -148,10 +152,8 @@ function endDrag(e) {
     isDragging = false;
     sliderContainer.style.cursor = 'grab';
 
-    const endPosition = getPositionX(e); // Use fixed getPositionX
+    const endPosition = getPositionX(e);
     const movedBy = endPosition - startX;
-
-    console.log("Drag ended. Moved by:", movedBy); // Debug
 
     // Snap to nearest image
     if (movedBy < -50 && currentIndex < imageStack.length - 1) {
@@ -160,15 +162,12 @@ function endDrag(e) {
         currentIndex--;
     }
 
-    console.log("Current Index Updated to:", currentIndex); // Debug
-
-    updateImages();
+    updateImages(); // Update images and counter
     movedDistance = 0; // Reset for next interaction
 }
 
 // Function to update image positions
 function updateImages() {
-    console.log("Updating images to reflect current index:", currentIndex); // Debug
     imageStack.forEach((img, index) => {
         const offset = index - currentIndex;
         img.style.transform = `
@@ -180,6 +179,7 @@ function updateImages() {
         img.style.zIndex = `${4 - Math.abs(offset)}`;
         img.style.transition = 'transform 0.3s ease'; // Smooth snapping
     });
+    updateCounter(); // Update the counter
 }
 
 // Function to get the X position of the pointer
@@ -194,9 +194,8 @@ function getPositionX(e) {
     return 0; // Default fallback
 }
 
-// Initialize slider
+// Initialize slider and counter
 updateImages();
-
 
     </script>
 

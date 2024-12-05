@@ -350,3 +350,13 @@ body {
 .overlay.active {
     display: block;
 }
+
+#image-tracker {
+    font-size: 1.2rem; /* Adjust font size */
+    font-weight: bold;
+    color: #333;  
+    position: absolute;
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%);
+    bottom: 0;
+}
