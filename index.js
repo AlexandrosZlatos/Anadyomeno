@@ -72,7 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
 const overlay = document.querySelector('.overlay');
 
 function showOverlay() {
-    overlay.classList.add('active');
+    if (window.innerWidth <= 767) { // Only show overlay for mobile views
+        overlay.classList.add('active');
+    }
 }
 
 function hideOverlay() {

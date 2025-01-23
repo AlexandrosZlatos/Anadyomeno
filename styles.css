@@ -342,9 +342,9 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8); /* Black with opacity */
-    z-index: 9999; /* Ensure it stays on top */
-    display: none; /* Initially hidden */
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: none; 
 }
 
 .overlay.active {
@@ -352,11 +352,11 @@ body {
 }
 
 #image-tracker {
-    font-size: 1.2rem; /* Adjust font size */
+    font-size: 1.2rem; 
     font-weight: bold;
     color: #333;  
     position: absolute;
-    left: 50%; /* Center it horizontally */
+    left: 50%; 
     transform: translateX(-50%);
     bottom: 0;
 }
