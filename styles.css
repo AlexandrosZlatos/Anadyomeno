@@ -1,0 +1,1136 @@
+:root {
+    font-size: clamp(0.7rem, 1vw, 1.2rem);
+}
+
+/* Mobile-first default styles */
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+
+    text-transform: uppercase;
+    padding: 0;
+    background-color: #ece8da;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+
+}
+
+.index-page .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem; 
+    width: 90%; 
+    max-width: 25rem;
+}
+
+.index-page .dropdown-icon {
+    width: 60%; 
+    max-width: 17.5rem; 
+}
+
+.index-page .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.index-page .dropdown-item {
+    width: 90%; 
+    max-width: 13rem; /* About 160px equivalent */
+    height: auto;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.index-page .dropdown-item:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* CLOTHES */
+.clothes-page .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
+    }
+.clothes-page .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 30rem; 
+    padding-top: 1rem;
+}
+
+.clothes-page .dropdown-icon {
+    width: 20%; 
+    /* max-width: 5rem;  */
+    margin-bottom: 1rem; 
+    border-right: 2px solid black;
+    padding-right: 1rem;
+}
+
+.clothes-page .dropdown-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0rem;
+    flex-wrap: nowrap;
+    /* max-width: 100%; */
+    overflow: hidden;
+    flex-grow: 1; 
+    justify-content: space-between; 
+}
+
+.clothes-page .dropdown-content a {
+    position: relative;
+    font-size: clamp(0.8rem, 2vw, 1.2rem); /* Responsive font size */
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.5rem 0.6rem; /* Adjusted padding */
+    white-space: nowrap;
+}
+
+.clothes-page .dropdown-content a::after {
+    content: attr(data-text);
+    font-size: 1.2rem;
+    color: black;
+    text-transform: uppercase;
+    margin-left: 0rem;
+}
+
+.clothes-page .clothes-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 91%;
+    justify-content: center;
+    overflow-y: auto; 
+}
+
+.clothes-page .clothes-item img {
+    width: 100%; 
+    height: auto;
+    
+}
+
+
+.clothes-page .dropdown-item{
+    display: none;
+}
+.clothes-page .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
+    }
+.clothes-page .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 30rem; 
+    padding-top: 1rem;
+}
+
+.clothes-page .dropdown-icon {
+    width: 20%; 
+    /* max-width: 5rem;  */
+    margin-bottom: 1rem; 
+    border-right: 2px solid black;
+    padding-right: 1rem;
+    
+}
+
+.clothes-page .dropdown-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0rem;
+    flex-wrap: nowrap;
+    /* max-width: 100%; */
+    overflow: hidden;
+    flex-grow: 1; 
+    justify-content: space-between; 
+}
+
+.clothes-page .dropdown-content a {
+    position: relative;
+    font-size: clamp(0.8rem, 2vw, 1.2rem); /* Responsive font size */
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.5rem 0.6rem; /* Adjusted padding */
+    white-space: nowrap;
+}
+
+.clothes-page .dropdown-content a::after {
+    content: attr(data-text);
+    font-size: 1.2rem;
+    color: black;
+    text-transform: uppercase;
+    margin-left: 0rem;
+}
+
+.details .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 30rem; 
+    padding-top: 1rem;
+}
+
+.details .dropdown-icon {
+    width: 20%; 
+    /* max-width: 5rem;  */
+    margin-bottom: 1rem; 
+    border-right: 2px solid black;
+    padding-right: 1rem;
+}
+
+.details .dropdown-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0rem;
+    flex-wrap: nowrap;
+    /* max-width: 100%; */
+    overflow: hidden;
+    flex-grow: 1; 
+    justify-content: space-between; 
+}
+
+.details .dropdown-content a {
+    position: relative;
+    font-size: clamp(0.8rem, 2vw, 1.2rem); /* Responsive font size */
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.5rem 0.6rem; /* Adjusted padding */
+    white-space: nowrap;
+}
+
+.details .dropdown-content a::after {
+    content: attr(data-text);
+    font-size: 1.2rem;
+    color: black;
+    text-transform: uppercase;
+    margin-left: 0rem;
+}
+
+.details .dropdown-item{
+    display: none;
+}
+
+
+.details .dropdown-item {
+    width: 90%; 
+    max-width: 13rem; /* About 160px equivalent */
+    height: auto;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.details .dropdown-item:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.details .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
+}
+
+.details .main-image-container {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.details .main-image {
+    width: 100%;
+    height: auto;
+    cursor: zoom-in; 
+
+}
+
+.details .thumbnail-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.details .thumbnail-container img {
+    width: 23.75%; 
+    height: auto;
+
+}
+
+.details .details-container {
+    width: 100%;
+    text-align: left;
+}
+
+.details .clothing-details h2 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    padding-left: 1rem; 
+
+}
+
+.details .clothing-details p {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding-left: 1rem; 
+}
+
+.details .clothing-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.details .clothing-details ul li {
+    padding-left: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+}
+
+.details .button-container {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.details .button {
+    background-color: #ccc;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: not-allowed;
+}
+
+.details .others-container {
+    margin-top: 1rem;
+    width: 100%;
+    padding-bottom: 1rem; 
+}
+
+.details .other-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.details .other-images {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.details .other-images a {
+    display: flex; /* Ensures the link takes the size of the image */
+    width: 20%;
+}
+
+.details .other-images img {
+    width: 100%; /* Makes sure images retain their intended size */
+    height: auto;
+    display: block; /* Prevent extra spacing caused by inline elements */
+
+
+}
+
+.contact .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 30rem; 
+    padding-top: 1rem;
+}
+
+.contact .dropdown-icon {
+    width: 20%; 
+    /* max-width: 5rem;  */
+    margin-bottom: 1rem; 
+    border-right: 2px solid black;
+    padding-right: 1rem;
+}
+
+.contact .dropdown-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0rem;
+    flex-wrap: nowrap;
+    /* max-width: 100%; */
+    overflow: hidden;
+    flex-grow: 1; 
+    justify-content: space-between; 
+}
+
+.contact .dropdown-content a {
+    position: relative;
+    font-size: clamp(0.8rem, 2vw, 1.2rem); /* Responsive font size */
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.5rem 0.6rem; /* Adjusted padding */
+    white-space: nowrap;
+}
+
+.contact .dropdown-content a::after {
+    content: attr(data-text);
+    font-size: 1.2rem;
+    color: black;
+    text-transform: uppercase;
+    margin-left: 0rem;
+}
+
+.contact .dropdown-item{
+    display: none;
+}
+
+/* Contact Form Styling */
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+.contact .contact-container {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    text-align: left;
+    box-sizing: border-box;
+    overflow: hidden; 
+}
+
+/* Contact Form Title */
+.contact .contact-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Contact Form Info Text */
+.contact .contact-container p {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    line-height: 1.4;
+}
+
+.contact .contact-container a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Contact Form Fields */
+.contact .contact-container form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+}
+
+/* Label Styling */
+.contact .contact-container label {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.contact .contact-container input,
+.contact .contact-container textarea,
+.contact .contact-container button {
+    padding: 0.75rem;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+/* Textarea Customization */
+.contact .contact-container textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Submit Button */
+.contact .contact-container button {
+    background: black;
+    color: white;
+    font-size: 1rem;
+    text-transform: uppercase;
+    width: 20%;
+    align-self: flex-end; /* Moves it to the right */
+
+}
+
+.contact .contact-container * {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/*  */
+
+.about .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 30rem; 
+    padding-top: 1rem;
+}
+
+.about .dropdown-icon {
+    width: 20%; 
+    /* max-width: 5rem;  */
+    margin-bottom: 1rem; 
+    border-right: 2px solid black;
+    padding-right: 1rem;
+}
+
+.about .dropdown-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0rem;
+    flex-wrap: nowrap;
+    /* max-width: 100%; */
+    overflow: hidden;
+    flex-grow: 1; 
+    justify-content: space-between; 
+}
+
+.about .dropdown-content a {
+    position: relative;
+    font-size: clamp(0.8rem, 2vw, 1.2rem); /* Responsive font size */
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.5rem 0.6rem; /* Adjusted padding */
+    white-space: nowrap;
+}
+
+.about .dropdown-content a::after {
+    content: attr(data-text);
+    font-size: 1.2rem;
+    color: black;
+    text-transform: uppercase;
+    margin-left: 0rem;
+}
+
+.about .dropdown-item{
+    display: none;
+}
+
+.about .slider-container {
+    width: 100%;
+    max-width: 300px; /* Controls visible area */
+    height: auto;
+    overflow: hidden; /* Ensures no part of other images is visible */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vh; /* Moves it down based on viewport height */
+
+
+}
+
+.about .image-stack {
+    display: flex;
+    transition: transform 0.3s ease-out;
+    will-change: transform;
+    width: 100%;
+}
+
+.about .image-stack img {
+    width: 100%;
+    height: auto;
+    user-select: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.about .image-stack img:first-child {
+    opacity: 1;
+    position: relative;
+}
+
+.about .scroll-progress {
+    width: 100%;
+    max-width: 300px; 
+    height: 5px; 
+    background-color: #ccc;
+    position: relative;
+    margin-top: 1rem; 
+    border-radius: 2.5px;
+    overflow: hidden;
+}
+
+.about .scroll-bar {
+    width: 25%; 
+    height: 100%;
+    background-color: black; 
+    position: absolute;
+    left: 0;
+    transition: left 0.3s ease-in-out;
+}
+
+
+@media (max-width: 1000px) and (orientation: landscape) {
+    .clothes-page .container {
+        position: relative; 
+        width: 100%;
+        background-color: rgba(236, 232, 218, 0.95);
+        padding: 0.5rem 1rem;
+        transition: opacity 0.3s ease-in-out; 
+        opacity: 1; 
+        z-index: 1000;
+    }
+
+    .index-page .dropdown-content {
+        display: flex;
+        flex-direction: row; 
+        justify-content: center; 
+        align-items: center;
+        gap: 1.5rem; 
+        width: 100%;
+    }
+
+    .index-page .dropdown-item {
+        width: 100%; 
+        height: auto;
+    }
+
+    .clothes-page .clothes-item img {
+        width: 85%;
+
+    }
+
+    .clothes-page .clothes-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 0.5rem; 
+        width: 90%; 
+        padding: 0; 
+        margin: 0 auto; 
+    }
+}
+
+
+
+@media (min-width: 768px) { 
+    body {
+        background-color: #ece8da;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem; 
+        width: 90%; 
+        max-width: 25rem; 
+    }
+
+    .dropdown-icon {
+        width: 70%; 
+        max-width: 18.75rem; 
+    }
+
+    .dropdown-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    .dropdown-item {
+        max-width: 22.5rem; 
+    }
+
+    
+}
+
+
+@media (min-width: 1024px) {
+    .clothes-page .clothes-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem; 
+        justify-content: center;
+        align-items: center;
+        width: 80%; 
+        max-width: 900px; 
+    }
+    }
+
+
+@media (min-width: 1367px) { 
+
+    body {
+        background-color: #ece8da;        
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+    
+    .dropdown-icon {
+        max-width: 16vw; 
+        height: auto;
+    }
+    
+    .dropdown-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 100%;
+        opacity: 0;
+        transition: opacity 0.8s ease; 
+        pointer-events: none;
+    }
+    
+    .container:hover .dropdown-content {
+        opacity: 1;
+        pointer-events: auto; 
+    }
+    
+    
+    .dropdown-item {
+        width: 9.5vw; 
+        margin: 1vh 0; 
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.8;
+        transition: transform 0.3s, opacity 0.3s;
+        cursor: pointer; 
+    }
+    
+    .dropdown-item:hover {
+        transform: scale(1.1); 
+        opacity: 1; 
+    }
+    
+    .dropdown-item:nth-child(1) {
+        background-image: url('images/clothes.png');
+    }
+    
+    .dropdown-item:nth-child(2) {
+        background-image: url('images/about.png');
+    }
+    
+    .dropdown-item:nth-child(3) {
+        background-image: url('images/contact.png');
+    }
+    
+    .dropdown-item:nth-child(1):hover {
+        background-image: url('images/clothesSmoke.png');
+    }
+    
+    .dropdown-item:nth-child(2):hover {
+        background-image: url('images/aboutSmoke.png');
+    }
+    
+    .dropdown-item:nth-child(3):hover {
+        background-image: url('images/contactSmoke.png');
+    }
+
+ 
+    .clothes-page .dropdown-content {
+        opacity: 1 ; 
+        pointer-events: auto; 
+        position: static ; 
+        display: flex ; 
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+
+    .clothes-page .dropdown-content a::after {
+        content: attr(data-text);
+        font-size: 1.2rem;
+        color: black;
+        text-transform: uppercase;
+        margin-left: 0.5rem;
+        opacity: 1 ; 
+        display: inline-block; 
+        transition: text-decoration 0.2s ease-in-out;
+
+    }
+
+    .clothes-page .clothes-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        width: 90%; 
+        max-width: 1200px; 
+    }
+
+    .clothes-page .dropdown-icon {
+        width: auto; 
+        height: auto;
+        max-width: 7vw; 
+        display: block; 
+    }
+    
+    .clothes-page a .dropdown-icon {
+        display: block; 
+        text-decoration: none;  
+    }
+    
+    .clothes-page .dropdown-content a:hover::after {
+        text-decoration: underline;
+    }
+    
+    .clothes-page .clothes-item img {
+        transition: filter 0.2s ease-in-out;
+    }
+    
+    .clothes-page .clothes-item:hover img {
+        filter: brightness(90%);
+    }
+    
+    .details .dropdown-content {
+        opacity: 1 ; 
+        pointer-events: auto; 
+        position: static ; 
+        display: flex ; 
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+
+    .details .dropdown-content a::after {
+        content: attr(data-text);
+        font-size: 1.1rem;
+        color: black;
+        text-transform: uppercase;
+        margin-left: 0.5rem;
+        opacity: 1 ; 
+        display: inline-block; 
+    }
+
+    .details .dropdown-icon {
+        width: auto; 
+        height: auto;
+        max-width: 7vw; 
+        display: block; 
+    }
+    
+    .details a .dropdown-icon {
+        display: block; 
+        text-decoration: none;  
+    }
+    
+    .details .dropdown-content a:hover::after {
+        text-decoration: underline;
+    }
+    
+    .details .clothes-item img {
+        transition: filter 0.2s ease-in-out;
+    }
+    
+    .details .clothes-item:hover img {
+        filter: brightness(90%);
+    }
+
+    .image-details-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 7.5rem; 
+        width: 65%; 
+        margin: 1rem auto; 
+        align-items: start; 
+    }
+
+    .main-image-container {
+        width: 100%;
+        max-width: 350px; 
+    }
+
+    .details-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        height: 100%;
+        padding: 0;
+    }
+
+    .clothing-details h2 {
+        font-size: 1.5rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    .clothing-details p {
+        font-size: 1rem;
+    }
+
+    .clothing-details ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .clothing-details ul li {
+        font-size: 0.9rem;
+    }
+
+    .details .thumbnail-container img {
+        cursor: pointer; 
+        transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; 
+    }
+    
+    .details .thumbnail-container img:hover {
+        transform: scale(1.05); 
+    }
+    
+    .details .other-images {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    .details .other-images a {
+        display: flex; /* Ensures the link takes the size of the image */
+        width: 15%;
+    }
+    
+    .details .other-images img {
+        width: 100%; /* Makes sure images retain their intended size */
+        height: auto;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+        display: block; /* Prevent extra spacing caused by inline elements */
+    
+    
+    }
+    
+    .details .other-images img:hover {
+        transform: scale(1.05); 
+    }
+    
+    
+    .magnifier {
+        position: absolute;
+        border: 3px solid black;
+        border-radius: 50%;
+        width: 150px;  
+        height: 150px;
+        overflow: hidden;
+        pointer-events: none;
+        background-repeat: no-repeat;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        display: none; 
+    }
+
+
+    .contact .dropdown-content {
+        opacity: 1 ; 
+        pointer-events: auto; 
+        position: static ; 
+        display: flex ; 
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+
+    .contact .dropdown-content a::after {
+        content: attr(data-text);
+        font-size: 1.2rem;
+        color: black;
+        text-transform: uppercase;
+        margin-left: 0.5rem;
+        opacity: 1 ; 
+        display: inline-block; 
+        transition: text-decoration 0.2s ease-in-out;
+
+    }
+
+    .contact .clothes-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        width: 90%; 
+        max-width: 1200px; 
+    }
+
+    .contact .dropdown-icon {
+        width: auto; 
+        height: auto;
+        max-width: 7vw; 
+        display: block; 
+    }
+    
+    .contact .dropdown-icon {
+        display: block; 
+        text-decoration: none;  
+    }
+    
+    .contact .dropdown-content a:hover::after {
+        text-decoration: underline;
+    }
+    
+    .contact .contact-container {
+        max-width: 680px;
+        padding: 1rem;
+    }
+    
+    .contact .contact-container h2 {
+        font-size: 1.2rem; 
+    }
+    
+    .contact .contact-container p {
+        font-size: 0.9rem; 
+        margin-bottom: 1.5rem; 
+    }
+    
+    .contact .contact-container form {
+        gap: 0.5rem; 
+    }
+    
+    .contact .contact-container label {
+        font-size: 1rem;
+    }
+    
+    .contact .contact-container input,
+    .contact .contact-container textarea,
+    .contact .contact-container button {
+        font-size: 0.9rem; 
+        padding: 0.5rem; 
+    }
+    
+    .contact .contact-container textarea {
+        min-height: 80px; 
+    }
+    
+    .contact .contact-container button {
+        width: 30%; 
+    }
+    
+    
+    .about .dropdown-content {
+        opacity: 1 ; 
+        pointer-events: auto; 
+        position: static ; 
+        display: flex ; 
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+
+    .about .dropdown-content a::after {
+        content: attr(data-text);
+        font-size: 1.2rem;
+        color: black;
+        text-transform: uppercase;
+        margin-left: 0.5rem;
+        opacity: 1 ; 
+        display: inline-block; 
+        transition: text-decoration 0.2s ease-in-out;
+
+    }
+
+    .about .clothes-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        width: 90%; 
+        max-width: 1200px; 
+    }
+
+    .about .dropdown-icon {
+        width: auto; 
+        height: auto;
+        max-width: 7vw; 
+        display: block; 
+    }
+    
+    .about .dropdown-icon {
+        display: block; 
+        text-decoration: none;  
+    }
+    
+    .about .dropdown-content a:hover::after {
+        text-decoration: underline;
+    }
+    
+    .about .slider-container {
+        width: 90vw; /* Takes 90% of viewport width */
+        max-width: 450px; /* Prevents it from getting too large */
+        height: auto;
+    }
+    
+    .about .image-stack img {
+        width: 100%; /* Fills the slider container */
+        height: auto;
+    }
+    
+    .about .scroll-progress {
+        width: 90vw; /* Matches slider width */
+        max-width: 450px; /* Prevents excessive size */
+        height: 0.6rem; /* Scales with text size */
+        margin-top: 1rem;
+    }
+    
+    .about .scroll-bar {
+        height: 100%;
+    }
+    
+
+}

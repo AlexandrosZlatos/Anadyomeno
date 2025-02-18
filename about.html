@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" class="details-page">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anadyomeno</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo.png"/>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="about">
+        <div class="container">
+            <img src="images/anaduomeno.png" alt="Dropdown Icon" class="dropdown-icon" ondragstart="return false;"
+            oncontextmenu="return false;">
+
+            <div class="dropdown-content">
+                <a href="index.html" data-text="Home"><img src="images/contact.png" alt="Contact" class="dropdown-item"></a>
+                <a href="clothes.html" data-text="Clothes"><img src="images/clothes.png" alt="Clothes" class="dropdown-item"></a>
+                <a href="about.html" data-text="About"><img src="images/about.png" alt="About" class="dropdown-item"></a>
+            </div>
+        </div>
+
+        <div class="slider-container">
+            <div class="image-stack">
+                <img src="images/wtf.jpg" alt="Image 1" class="image" ondragstart="return false;" oncontextmenu="return false;">
+                <img src="images/wtf2.png" alt="Image 2" class="image" ondragstart="return false;" oncontextmenu="return false;">
+                <img src="images/wtf4.png" alt="Image 3" class="image" ondragstart="return false;" oncontextmenu="return false;">
+                <img src="images/wtf3.png" alt="Image 4" class="image" ondragstart="return false;" oncontextmenu="return false;">
+            </div>
+        </div>
+
+        <div class="scroll-progress">
+            <div class="scroll-bar"></div>
+        </div>
+        
+        <script>
+            const sliderContainer = document.querySelector('.slider-container');
+            const imageStack = document.querySelectorAll('.image');
+            const scrollBar = document.querySelector('.scroll-bar');
+            const imageCounter = document.getElementById('image-tracker'); 
+
+            let isDragging = false;
+            let startX = 0;
+            let movedDistance = 0;
+            let currentIndex = 0;
+            const totalImages = imageStack.length;
+
+            imageStack.forEach((img) => {
+                img.addEventListener('dragstart', (e) => e.preventDefault());
+            });
+
+            sliderContainer.addEventListener('mousedown', startDrag);
+            sliderContainer.addEventListener('touchstart', startDrag, { passive: false });
+
+            sliderContainer.addEventListener('mousemove', drag);
+            sliderContainer.addEventListener('touchmove', drag, { passive: false });
+
+            sliderContainer.addEventListener('mouseup', endDrag);
+            sliderContainer.addEventListener('mouseleave', endDrag);
+            sliderContainer.addEventListener('touchend', endDrag);
+
+            function startDrag(e) {
+                isDragging = true;
+                startX = getPositionX(e);
+                movedDistance = 0; 
+                sliderContainer.style.cursor = e.type === 'mousedown' ? 'grabbing' : 'default';
+            }
+
+            function drag(e) {
+                if (!isDragging) return;
+
+                const currentPosition = getPositionX(e);
+                const movedBy = currentPosition - startX;
+                movedDistance = Math.abs(movedBy);
+
+                imageStack.forEach((img, index) => {
+                    const offset = index - currentIndex + movedBy / 300; 
+                    img.style.transform = `translateX(${offset * 15}%) translateZ(${offset * -50}px) rotateY(${offset * 5}deg)`;
+                    img.style.opacity = `${1 - Math.abs(offset) * 0.2}`;
+                    img.style.zIndex = `${4 - Math.abs(Math.round(offset))}`;
+                    img.style.transition = 'none'; 
+                });
+
+                e.preventDefault(); 
+            }
+
+            function endDrag(e) {
+                if (!isDragging) return;
+                isDragging = false;
+                sliderContainer.style.cursor = 'grab';
+
+                const endPosition = getPositionX(e);
+                const movedBy = endPosition - startX;
+
+                if (movedBy < -50 && currentIndex < totalImages - 1) {
+                    currentIndex++;
+                } else if (movedBy > 50 && currentIndex > 0) {
+                    currentIndex--;
+                }
+
+                updateImages();
+                movedDistance = 0; 
+            }
+
+            function updateImages() {
+                imageStack.forEach((img, index) => {
+                    const offset = index - currentIndex;
+                    img.style.transform = `translateX(${offset * 15}%) translateZ(${offset * -50}px) rotateY(${offset * 5}deg)`;
+                    img.style.opacity = `${1 - Math.abs(offset) * 0.5}`;
+                    img.style.zIndex = `${4 - Math.abs(offset)}`;
+                    img.style.transition = 'transform 0.3s ease';
+                });
+
+                updateScrollbar(); 
+            }
+
+            function updateScrollbar() {
+                const stepSize = 25; 
+                const position = currentIndex * stepSize; 
+
+                scrollBar.style.width = `25%`; 
+                scrollBar.style.left = `${position}%`; 
+            }
+
+            function getPositionX(e) {
+                if (e.type.includes('mouse')) {
+                    return e.clientX; 
+                } else if (e.touches && e.touches[0]) {
+                    return e.touches[0].clientX; 
+                } else if (e.changedTouches && e.changedTouches[0]) {
+                    return e.changedTouches[0].clientX; 
+                }
+                return 0; 
+            }
+
+            let isDraggingScrollbar = false;
+            let startXScrollbar = 0;
+            let startLeft = 0;
+
+            scrollBar.addEventListener('mousedown', startScrollbarDrag);
+            document.addEventListener('mousemove', dragScrollbar);
+            document.addEventListener('mouseup', endScrollbarDrag);
+
+            scrollBar.addEventListener('touchstart', startScrollbarDrag, { passive: false });
+            document.addEventListener('touchmove', dragScrollbar, { passive: false });
+            document.addEventListener('touchend', endScrollbarDrag);
+
+            function startScrollbarDrag(e) {
+                isDraggingScrollbar = true;
+                startXScrollbar = getPositionX(e);
+                startLeft = parseFloat(scrollBar.style.left) || 0;
+                e.preventDefault();
+            }
+
+            function dragScrollbar(e) {
+                if (!isDraggingScrollbar) return;
+
+                const currentX = getPositionX(e);
+                const deltaX = currentX - startXScrollbar;
+                const stepSize = 100 / (totalImages - 1); 
+                let newLeft = startLeft + (deltaX / sliderContainer.clientWidth) * 100;
+
+                if (newLeft < 0) newLeft = 0;
+                if (newLeft > 100) newLeft = 100; 
+
+                scrollBar.style.left = `${newLeft}%`;
+
+                currentIndex = Math.round(newLeft / stepSize);
+                updateImages();
+            }
+
+            function endScrollbarDrag() {
+                if (!isDraggingScrollbar) return;
+                isDraggingScrollbar = false;
+                updateScrollbar();
+            }
+            updateImages();
+        </script>
+    <script src="index.js"></script>
+</body>
+</html>

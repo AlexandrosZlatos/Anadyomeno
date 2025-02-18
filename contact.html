@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" class="details-page">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anadyomeno</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo.png"/>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Prevent horizontal scrolling */
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body class="contact">
+        <!-- Dropdown Menu (Fixed Alignment) -->
+        <div class="container">
+            <img src="images/anaduomeno.png" alt="Dropdown Icon" class="dropdown-icon" ondragstart="return false;" oncontextmenu="return false;"> 
+            <div class="dropdown-content">
+                <a href="index.html" data-text="Home"><img src="images/contact.png" alt="Contact" class="dropdown-item" ondragstart="return false;" oncontextmenu="return false;"></a>
+                <a href="clothes.html" data-text="Clothes"><img src="images/clothes.png" alt="Clothes" class="dropdown-item" ondragstart="return false;" oncontextmenu="return false;"></a>
+                <a href="about.html" data-text="About"><img src="images/about.png" alt="About" class="dropdown-item" ondragstart="return false;" oncontextmenu="return false;"></a>
+            </div>
+        </div>
+
+        <!-- Contact Form (Separate Container to Avoid Misalignment) -->
+        <div class="contact-container">
+            <h2>Contact Us</h2>
+            <p>For returns or any other problem with your order, please email <a href="mailto:test@test.com">test@test.com</a></p>
+        
+            <form id="contactForm" method="POST" action="/send">
+                <label for="name">Name*</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                
+                <label for="email">Email*</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="Your Phone">
+                
+                <label for="message">Message*</label>
+                <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    <script src="index.js"></script>
+</body>
+</html>

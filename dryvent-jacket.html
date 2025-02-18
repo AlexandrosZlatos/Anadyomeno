@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" class="details-page">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anadyomeno</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo.png"/>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        html, body {
+            overflow-x: hidden;
+        }
+    </style>
+
+</head>
+<body class="details">
+    <div class="main-content">
+        <!-- Dropdown icon and content -->
+        <div class="container">
+            <img src="images/anaduomeno.png" alt="Dropdown Icon" class="dropdown-icon" ondragstart="return false;" oncontextmenu="return false;">
+            <div class="dropdown-content">
+                <a href="index.html" data-text="Home"><img src="images/contact.png" alt="Contact" class="dropdown-item" ondragstart="return false;" oncontextmenu="return false;"></a>
+                <a href="clothes.html" data-text="Clothes"><img src="images/clothes.png" alt="Clothes" class="dropdown-item" ondragstart="return false;" oncontextmenu="return false;"></a>
+                <a href="about.html" data-text="About"><img src="images/about.png" alt="About" class="dropdown-item" ondragstart="return false;" oncontextmenu="return false;"></a>
+            </div>
+        </div>
+
+        <!-- Grid layout for main image and details -->
+        <div class="image-details-grid">
+            <!-- Main image section with thumbnails below -->
+            <div class="main-image-container">
+                <img src="images/IMG_4859.jpg" alt="Exoskeleton Jacket" class="main-image">
+                <div class="thumbnail-container">
+                    <img src="images/IMG_4859.jpg" alt="Thumbnail 1" onclick="changeMainImage(this.src)" ondragstart="return false;" oncontextmenu="return false;">
+                    <img src="images/IMG_4860.jpg" alt="Thumbnail 2" onclick="changeMainImage(this.src)" ondragstart="return false;" oncontextmenu="return false;">
+                    <img src="images/IMG_4861.jpg" alt="Thumbnail 3" onclick="changeMainImage(this.src)" ondragstart="return false;" oncontextmenu="return false;">
+                    <img src="images/IMG_4864.jpg" alt="Thumbnail 4" onclick="changeMainImage(this.src)" ondragstart="return false;" oncontextmenu="return false;">
+                </div>
+            </div>
+
+            <!-- Clothing details section -->
+            <div class="details-container">
+                <div class="clothing-details">
+                    <h2>TNF Customized “Dryvent Jacket”</h2>
+                    <p>Size(Man’s): Medium</p>
+                    <p>“Pursue or Regret.”</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other images section -->
+        <div class="others-container">
+            <div class="other-title">Others</div>
+            <div class="other-images">
+                <a href="exoskeleton-black.html"><img src="images/IMG_0639.jpg" alt="Other Image 1" ondragstart="return false;" oncontextmenu="return false;"></a>
+                <a href="exoskeleton.html"><img src="images/IMG_0456.jpg" alt="Other Image 2" ondragstart="return false;" oncontextmenu="return false;"></a>
+                <a href="fleece-furry.html"><img src="images/IMG_4867.jpg" alt="Other Image 3" ondragstart="return false;" oncontextmenu="return false;"></a>
+                <a href="exoskeleton-midland.html"><img src="images/image0.jpg" alt="Other Image 4" ondragstart="return false;" oncontextmenu="return false;"></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
